@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -36,6 +37,20 @@ public class HeapSort {
         arr[j] = temp;
     }
 
+    private static int scanNumber(Scanner sc) {
+        int value;
+        while (true) {
+            try {
+                value = sc.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.print("Please enter a valid number: ");
+                sc.nextLine();
+            }
+        }
+        return value;
+    }
+
     public static void heapSort(int[] arr) {
         int n = arr.length;
 
@@ -65,12 +80,13 @@ public class HeapSort {
         System.out.println();
 
         System.out.print("Enter array size: ");
-        int n = sc.nextInt();
+
+        int n = scanNumber(sc);
         int[] arr = new int[n];
 
         System.out.print("Enter array's values: ");
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+            arr[i] = scanNumber(sc);
         }
 
         heapSort(arr);
