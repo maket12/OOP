@@ -102,7 +102,7 @@ public class IncidenceMatrixGraph implements Graph {
     @Override
     public List<Integer> getNeighbors(int vertex) {
         List<Integer> neighbors = new ArrayList<>();
-        if (vertex < 0 || vertex >= vertexCount) return neighbors;
+        if (vertex < 0 || vertex >= vertexCount) return Collections.emptyList();
 
         for (int j = 0; j < edgeCount; j++) {
             if (incidenceMatrix[vertex][j] == 1) {
@@ -115,102 +115,6 @@ public class IncidenceMatrixGraph implements Graph {
             }
         }
         return neighbors;
-    }
-
-    @Override
-    public void readFromFile(String filename) {
-        try (Scanner scanner = new Scanner(new File(filename))) {
-            if (!scanner.hasNextLine()) {
-                return;
-            }
-
-            String firstLine = scanner.nextLine().trim();
-            String[] parts = firstLine.split("\\s+");
-
-            if (parts.length < 2) {
-                throw new IllegalArgumentException("Invalid file format: first line should contain V and E");
-            }
-
-            int vertexCount = Integer.parseInt(parts[0]);
-            int edgeCount = Integer.parseInt(parts[1]);
-
-            this.incidenceMatrix = new int[vertexCount][Math.max(1, edgeCount)];
-            this.vertexCount = vertexCount;
-            this.edgeCount = 0;
-
-            for (int i = 0; i < edgeCount && scanner.hasNextLine(); i++) {
-                String line = scanner.nextLine().trim();
-                if (line.isEmpty()) continue;
-
-                String[] edgeParts = line.split("\\s+");
-                if (edgeParts.length < 2) {
-                    throw new IllegalArgumentException("Invalid edge format at line " + (i + 2));
-                }
-
-                int from = Integer.parseInt(edgeParts[0]);
-                int to = Integer.parseInt(edgeParts[1]);
-
-                if (from < 0 || from >= vertexCount || to < 0 || to >= vertexCount) {
-                    throw new IllegalArgumentException("Invalid vertex index in edge: " + from + " -> " + to);
-                }
-
-                ensureEdgeCapacity(this.edgeCount + 1);
-
-                for (int v = 0; v < vertexCount; v++) {
-                    incidenceMatrix[v][this.edgeCount] = 0;
-                }
-                incidenceMatrix[from][this.edgeCount] = 1;
-                incidenceMatrix[to][this.edgeCount] = -1;
-
-                this.edgeCount++;
-            }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("File not found: " + filename, e);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("Invalid number format in file", e);
-        } catch (Exception e) {
-            throw new RuntimeException("Error reading graph from file: " + filename, e);
-        }
-    }
-
-    @Override
-    public List<Integer> topologicalSort() {
-        int[] inDeg = new int[vertexCount];
-        for (int j = 0; j < edgeCount; j++) {
-            for (int v = 0; v < vertexCount; v++) {
-                if (incidenceMatrix[v][j] == -1) {
-                    inDeg[v]++;
-                    break;
-                }
-            }
-        }
-
-        Queue<Integer> q = new ArrayDeque<>();
-        for (int v = 0; v < vertexCount; v++) if (inDeg[v] == 0) q.add(v);
-
-        List<Integer> order = new ArrayList<>(vertexCount);
-        while (!q.isEmpty()) {
-            int v = q.poll();
-            order.add(v);
-
-            for (int j = 0; j < edgeCount; j++) {
-                if (incidenceMatrix[v][j] == 1) {
-                    int u = -1;
-                    for (int i = 0; i < vertexCount; i++) {
-                        if (incidenceMatrix[i][j] == -1) {
-                            u = i;
-                            break;
-                        }
-                    }
-                    if (u != -1) {
-                        inDeg[u]--;
-                        if (inDeg[u] == 0) q.add(u);
-                    }
-                }
-            }
-        }
-        return order;
     }
 
     @Override

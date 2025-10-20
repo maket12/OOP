@@ -1,9 +1,9 @@
 package com.solution;
 
-import com.solution.graph.AdjacencyListGraph;
-import com.solution.graph.AdjacencyMatrixGraph;
-import com.solution.graph.IncidenceMatrixGraph;
-import com.solution.graph.Graph;
+import com.solution.graph.*;
+import com.solution.graph.parser.GraphParser;
+import com.solution.graph.sorter.TopologicalSorter;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,11 +24,11 @@ public class Main {
             Graph graph;
             switch (implChoice) {
                 case 1:
-                    graph = new AdjacencyListGraph();
-                    System.out.println("Using Adjacency List implementation");
+                    graph = new AdjacencyMapGraph();
+                    System.out.println("Using Adjacency Map (List) implementation");
                     break;
                 case 2:
-                    graph = new AdjacencyMatrixGraph(0);
+                    graph = new AdjacencyMatrixGraph();
                     System.out.println("Using Adjacency Matrix implementation");
                     break;
                 case 3:
@@ -36,10 +36,9 @@ public class Main {
                     System.out.println("Using Incidence Matrix implementation");
                     break;
                 default:
-                    System.out.println("Invalid choice. Using Incidence Matrix.");
-                    graph = new IncidenceMatrixGraph(0, 0);
+                    System.out.println("Invalid choice. Using Adjacency Matrix by default.");
+                    graph = new AdjacencyMatrixGraph();
             }
-
 
             System.out.println("Choose input method:");
             System.out.println("1 - Read from file");
@@ -53,9 +52,13 @@ public class Main {
                 // чтение из файла
                 System.out.print("Enter filename: ");
                 String filename = scanner.nextLine().trim();
-                graph.readFromFile(filename);
+
+                GraphParser parser = new GraphParser();
+                parser.parse(graph, filename);
+
+                System.out.println("\nGraph loaded successfully from file: " + filename);
             } else if (choice == 2) {
-                // ручной ввод
+                // Ручной ввод
                 graph = enterGraphManually(scanner);
             } else {
                 System.out.println("Invalid choice. Exiting.");
@@ -66,15 +69,16 @@ public class Main {
             System.out.println(graph);
 
             System.out.println("\nPerforming topological sort...");
-            List<Integer> sorted = graph.topologicalSort();
+            TopologicalSorter sorter = new TopologicalSorter();
+            TopologicalSorter.Result res = sorter.sort(graph);
 
-            System.out.println("Topological sort result: " + sorted);
+            System.out.println("Topological sort result: " + res.order());
 
-            if (sorted.size() == graph.getVertexCount()) {
+            if (res.acyclic()) {
                 System.out.println("✓ The graph is acyclic (DAG)");
             } else {
                 System.out.println("⚠ Warning: The graph contains cycles!");
-                System.out.println("Only " + sorted.size() + " vertices could be sorted out of " + graph.getVertexCount());
+                System.out.println("Returned order is a DFS postorder (not a valid topo-order for cyclic graphs).");
             }
 
         } catch (Exception e) {
@@ -84,6 +88,8 @@ public class Main {
             scanner.close();
         }
     }
+
+    // === Manual Input Section ===
 
     private static Graph enterGraphManually(Scanner scanner) {
         Graph graph = new IncidenceMatrixGraph(0, 0);
@@ -103,7 +109,6 @@ public class Main {
             } else if (input.equalsIgnoreCase("add")) {
                 addSingleEdge(scanner, graph);
             } else if (input.matches("\\d+\\s+\\d+")) {
-                // Формат: "from to"
                 String[] parts = input.split("\\s+");
                 int from = Integer.parseInt(parts[0]);
                 int to = Integer.parseInt(parts[1]);

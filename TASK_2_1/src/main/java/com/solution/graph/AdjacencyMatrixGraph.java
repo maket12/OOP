@@ -9,8 +9,8 @@ public class AdjacencyMatrixGraph implements Graph {
     private boolean[][] adjacencyMatrix;
     private int vertexCount;
 
-    public AdjacencyMatrixGraph(int size) {
-        adjacencyMatrix = new boolean[size][size];
+    public AdjacencyMatrixGraph() {
+        adjacencyMatrix = new boolean[0][0];
         vertexCount = 0;
     }
 
@@ -44,6 +44,10 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public List<Integer> getNeighbors(int vertex) {
+        if (vertex < 0 || vertex >= adjacencyMatrix.length) {
+            return Collections.emptyList();
+        }
+
         List<Integer> neighbors = new ArrayList<>();
         for (int i = 0; i < adjacencyMatrix.length; i++) {
             if (adjacencyMatrix[vertex][i]) {
@@ -51,85 +55,6 @@ public class AdjacencyMatrixGraph implements Graph {
             }
         }
         return neighbors;
-    }
-
-    @Override
-    public void readFromFile(String filename) {
-        try (Scanner scanner = new Scanner(new java.io.File(filename))) {
-            if (!scanner.hasNextLine()) {
-                return;
-            }
-
-            String firstLine = scanner.nextLine().trim();
-            String[] parts = firstLine.split("\\s+");
-
-            if (parts.length < 2) {
-                throw new IllegalArgumentException("Invalid file format: first line should contain V and E");
-            }
-
-            int vertexCount = Integer.parseInt(parts[0]);
-            int edgeCount = Integer.parseInt(parts[1]);
-
-            this.adjacencyMatrix = new boolean[vertexCount][vertexCount];
-            this.vertexCount = vertexCount;
-
-            for (int i = 0; i < edgeCount && scanner.hasNextLine(); i++) {
-                String line = scanner.nextLine().trim();
-                if (line.isEmpty()) continue;
-
-                String[] edgeParts = line.split("\\s+");
-                if (edgeParts.length < 2) {
-                    throw new IllegalArgumentException("Invalid edge format at line " + (i + 2));
-                }
-
-                int from = Integer.parseInt(edgeParts[0]);
-                int to = Integer.parseInt(edgeParts[1]);
-
-                if (from < 0 || from >= vertexCount || to < 0 || to >= vertexCount) {
-                    throw new IllegalArgumentException("Invalid vertex index in edge: " + from + " -> " + to);
-                }
-
-                adjacencyMatrix[from][to] = true;
-            }
-
-        } catch (java.io.FileNotFoundException e) {
-            throw new RuntimeException("File not found: " + filename, e);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("Invalid number format in file", e);
-        } catch (Exception e) {
-            throw new RuntimeException("Error reading graph from file: " + filename, e);
-        }
-    }
-
-    @Override
-    public List<Integer> topologicalSort() {
-        List<Integer> sortedList = new ArrayList<>();
-        boolean[] visited = new boolean[adjacencyMatrix.length];
-        Stack<Integer> stack = new Stack<>();
-
-        for (int i = 0; i < adjacencyMatrix.length; i++) {
-            if (!visited[i]) {
-                topologicalSortUtil(i, visited, stack);
-            }
-        }
-
-        while (!stack.isEmpty()) {
-            sortedList.add(stack.pop());
-        }
-
-        return sortedList;
-    }
-
-    private void topologicalSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
-        visited[v] = true;
-
-        for (int i = 0; i < adjacencyMatrix.length; i++) {
-            if (adjacencyMatrix[v][i] && !visited[i]) {
-                topologicalSortUtil(i, visited, stack);
-            }
-        }
-
-        stack.push(v);
     }
 
     @Override

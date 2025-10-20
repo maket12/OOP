@@ -9,7 +9,7 @@ class AdjacencyListGraphTest {
 
     @Test
     void testAddVertexAndEdge() {
-        Graph graph = new AdjacencyListGraph();
+        Graph graph = new AdjacencyMapGraph();
         graph.addVertex(0);
         graph.addVertex(1);
 
