@@ -5,14 +5,14 @@ plugins {
 }
 
 application {
-    mainClass = 'com.solution.Main'
+    mainClass = 'ru.nsu.ziabkin.Main'
 }
 
-//run {
-//    standardInput = System.in
-//}
+run {
+    standardInput = System.in
+}
 
-group = 'com.solution'
+group = 'ru.nsu.ziabkin'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -24,6 +24,7 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
+
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
