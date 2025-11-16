@@ -1,9 +1,20 @@
 package ru.nsu.ziabkin.graph;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 
+/**
+ * Implementation of the {@link Graph} interface using an incidence matrix.
+ * <p>
+ * The matrix has size {@code vertexCount × edgeCount}, and for each edge column:
+ * <ul>
+ *   <li>the source vertex contains {@code 1}</li>
+ *   <li>the target vertex contains {@code -1}</li>
+ *   <li>all other vertices contain {@code 0}</li>
+ * </ul>
+ * The graph is directed.
+ */
 public class IncidenceMatrixGraph implements Graph {
     private int[][] incidenceMatrix;
     private int vertexCount;

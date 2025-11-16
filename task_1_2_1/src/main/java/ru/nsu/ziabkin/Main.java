@@ -1,15 +1,28 @@
 package ru.nsu.ziabkin;
 
-import com.solution.graph.Graph;
-import com.solution.graph.AdjacencyMapGraph;
-import com.solution.graph.AdjacencyMatrixGraph;
-import com.solution.graph.IncidenceMatrixGraph;
-import com.solution.graph.parser.GraphParser;
-import com.solution.graph.sorter.TopologicalSorter;
-
+import ru.nsu.ziabkin.graph.AdjacencyMapGraph;
+import ru.nsu.ziabkin.graph.AdjacencyMatrixGraph;
+import ru.nsu.ziabkin.graph.Graph;
+import ru.nsu.ziabkin.graph.IncidenceMatrixGraph;
+import ru.nsu.ziabkin.graph.parser.GraphParser;
+import ru.nsu.ziabkin.graph.sorter.TopologicalSorter;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Entry point for the application that allows a user
+ * to construct a graph, load it from a file, or enter it manually,
+ * and then perform a topological sort on the resulting structure.
+ * <p>
+ * The program supports three graph implementations:
+ * <ul>
+ *     <li>{@link AdjacencyMapGraph}</li>
+ *     <li>{@link AdjacencyMatrixGraph}</li>
+ *     <li>{@link IncidenceMatrixGraph}</li>
+ * </ul>
+ * The user selects the graph type and the input method (file or manual),
+ * after which the graph is sorted.
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
