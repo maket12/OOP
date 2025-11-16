@@ -1,10 +1,10 @@
 package ru.nsu.ziabkin.graph.sorter;
 
-import ru.nsu.ziabkin.graph.Graph;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+import ru.nsu.ziabkin.graph.Graph;
 
 /**
  * Performs topological sorting of a directed graph using

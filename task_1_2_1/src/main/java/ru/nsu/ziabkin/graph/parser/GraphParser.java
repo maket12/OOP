@@ -1,9 +1,9 @@
 package ru.nsu.ziabkin.graph.parser;
 
-import ru.nsu.ziabkin.graph.Graph;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import ru.nsu.ziabkin.graph.Graph;
 
 /**
  * Utility class responsible for reading a graph structure from a text file.
@@ -52,7 +52,9 @@ public class GraphParser {
      */
     public void parse(Graph graph, String filename) {
         try (Scanner scanner = new Scanner(new File(filename))) {
-            if (!scanner.hasNextLine()) return;
+            if (!scanner.hasNextLine()) {
+                return;
+            }
 
             String[] parts = scanner.nextLine().trim().split("\\s+");
             if (parts.length < 2) {
@@ -68,7 +70,9 @@ public class GraphParser {
 
             for (int i = 0; i < edgeCount && scanner.hasNextLine(); i++) {
                 String line = scanner.nextLine().trim();
-                if (line.isEmpty()) continue;
+                if (line.isEmpty()) {
+                    continue;
+                }
 
                 String[] edgeParts = line.split("\\s+");
                 if (edgeParts.length >= 2) {

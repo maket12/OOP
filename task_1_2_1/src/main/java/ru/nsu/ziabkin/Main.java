@@ -88,7 +88,8 @@ public class Main {
                 System.out.println("✓ The graph is acyclic (DAG)");
             } else {
                 System.out.println("⚠ Warning: The graph contains cycles!");
-                System.out.println("Returned order is a DFS postorder (not a valid topo-order for cyclic graphs).");
+                System.out.println("Returned order is a DFS postorder " +
+                        "(not a valid topo-order for cyclic graphs).");
             }
 
         } catch (Exception e) {

@@ -1,11 +1,16 @@
 package ru.nsu.ziabkin.graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * A graph implementation based on an adjacency map, where each vertex
  * maps to a list of outgoing adjacent vertices (directed edges).
- * <p>
  * This implementation supports dynamic addition and removal of vertices
  * and edges. Vertices are represented as integers.
  */
@@ -46,10 +51,10 @@ public class AdjacencyMapGraph implements Graph {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj){
+        if (this == obj) {
             return true;
         }
-        if (obj == null || getClass() != obj.getClass()){
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
 

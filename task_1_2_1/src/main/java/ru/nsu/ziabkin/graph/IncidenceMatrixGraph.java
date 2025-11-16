@@ -1,8 +1,8 @@
 package ru.nsu.ziabkin.graph;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Implementation of the {Graph} interface using an incidence matrix.
@@ -31,7 +31,10 @@ public class IncidenceMatrixGraph implements Graph {
         }
 
         int newVertexCount = vertex + 1;
-        int colCapacity = incidenceMatrix.length > 0 ? incidenceMatrix[0].length : Math.max(1, edgeCount);
+        int colCapacity = (
+                incidenceMatrix.length > 0 ? incidenceMatrix[0].length
+                        : Math.max(1, edgeCount)
+        );
 
         int[][] newMatrix = new int[newVertexCount][colCapacity];
         for (int i = 0; i < vertexCount; i++) {
@@ -92,7 +95,9 @@ public class IncidenceMatrixGraph implements Graph {
 
         ensureEdgeCapacity(edgeCount + 1);
 
-        for (int i = 0; i < vertexCount; i++) incidenceMatrix[i][edgeCount] = 0;
+        for (int i = 0; i < vertexCount; i++) {
+            incidenceMatrix[i][edgeCount] = 0;
+        }
         incidenceMatrix[vertex1][edgeCount] = 1;
         incidenceMatrix[vertex2][edgeCount] = -1;
 
