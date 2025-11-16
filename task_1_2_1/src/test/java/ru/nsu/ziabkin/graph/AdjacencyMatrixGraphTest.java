@@ -1,11 +1,10 @@
 package ru.nsu.ziabkin.graph;
 
 import java.util.List;
-import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.Assertions.Assertions.assertEquals;
 import org.junit.jupiter.api.Assertions.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Assertions.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 class AdjacencyMatrixGraphTest {
 
