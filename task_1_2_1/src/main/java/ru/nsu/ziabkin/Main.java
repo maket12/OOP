@@ -1,6 +1,9 @@
-package com.solution;
+package ru.nsu.ziabkin;
 
-import com.solution.graph.*;
+import com.solution.graph.Graph;
+import com.solution.graph.AdjacencyMapGraph;
+import com.solution.graph.AdjacencyMatrixGraph;
+import com.solution.graph.IncidenceMatrixGraph;
 import com.solution.graph.parser.GraphParser;
 import com.solution.graph.sorter.TopologicalSorter;
 

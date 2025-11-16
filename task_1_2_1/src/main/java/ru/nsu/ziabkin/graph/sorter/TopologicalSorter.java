@@ -1,7 +1,6 @@
-package com.solution.graph.sorter;
+package ru.nsu.ziabkin.graph.sorter;
 
-import com.solution.graph.Graph;
-
+import ru.nsu.ziabkin.graph.Graph;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;

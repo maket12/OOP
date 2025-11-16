@@ -1,4 +1,4 @@
-package com.solution.graph;
+package ru.nsu.ziabkin.graph;
 
 import java.util.*;
 import java.io.File;

@@ -1,6 +1,6 @@
-package com.solution.graph.parser;
+package ru.nsu.ziabkin.graph.parser;
 
-import com.solution.graph.Graph;
+import ru.nsu.ziabkin.graph.Graph;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;

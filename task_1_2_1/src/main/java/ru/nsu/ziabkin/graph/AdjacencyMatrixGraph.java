@@ -1,9 +1,8 @@
-package com.solution.graph;
+package ru.nsu.ziabkin.graph;
 
-import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class AdjacencyMatrixGraph implements Graph {
     private boolean[][] adjacencyMatrix;
@@ -59,11 +58,17 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()){
+            return false;
+        }
         AdjacencyMatrixGraph that = (AdjacencyMatrixGraph) obj;
 
-        if (this.vertexCount != that.vertexCount) return false;
+        if (this.vertexCount != that.vertexCount){
+            return false;
+        }
 
         for (int i = 0; i < vertexCount; i++) {
             for (int j = 0; j < vertexCount; j++) {
