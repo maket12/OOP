@@ -3,9 +3,9 @@ package ru.nsu.ziabkin.graph;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Assertions.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions.Assertions.assertNotEquals;
+import org.junit.jupiter.api.Assertions.Assertions.assertTrue;
 
 class AdjacencyMatrixGraphTest {
 
@@ -20,8 +20,8 @@ class AdjacencyMatrixGraphTest {
         List<Integer> neighbors0 = graph.getNeighbors(0);
         List<Integer> neighbors1 = graph.getNeighbors(1);
 
-        assertTrue(neighbors0.contains(1));
-        assertEquals(0, neighbors1.size());
+        Assertions.assertTrue(neighbors0.contains(1));
+        Assertions.assertEquals(0, neighbors1.size());
     }
 
     @Test
@@ -35,13 +35,14 @@ class AdjacencyMatrixGraphTest {
         graph.addEdge(1, 2);
 
         List<Integer> sorted = graph.topologicalSort();
-        assertEquals(List.of(0, 1, 2), sorted);
+        Assertions.assertEquals(List.of(0, 1, 2), sorted);
     }
 
     @Test
     void testEqualsGraphs() {
         AdjacencyMatrixGraph g1 = new AdjacencyMatrixGraph(3);
-        g1.addVertex(0); g1.addVertex(1);
+        g1.addVertex(0);
+        g1.addVertex(1);
         g1.addEdge(0, 1);
 
         AdjacencyMatrixGraph g2 = new AdjacencyMatrixGraph(3);
@@ -49,10 +50,10 @@ class AdjacencyMatrixGraphTest {
         g2.addVertex(1);
         g2.addEdge(0, 1);
 
-        assertEquals(g1, g2);
+        Assertions.assertEquals(g1, g2);
 
         g2.addVertex(2);
-        assertNotEquals(g1, g2);
+        Assertions.assertNotEquals(g1, g2);
     }
 
     @Test
@@ -63,7 +64,7 @@ class AdjacencyMatrixGraphTest {
         graph.addEdge(0, 1);
 
         String output = graph.toString();
-        assertTrue(output.contains("0 -> 1"));
-        assertTrue(output.contains("1 -> "));
+        Assertions.assertTrue(output.contains("0 -> 1"));
+        Assertions.assertTrue(output.contains("1 -> "));
     }
 }
