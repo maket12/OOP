@@ -58,15 +58,15 @@ public class AdjacencyMatrixGraph implements Graph {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj){
+        if (this == obj) {
             return true;
         }
-        if (obj == null || getClass() != obj.getClass()){
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
         AdjacencyMatrixGraph that = (AdjacencyMatrixGraph) obj;
 
-        if (this.vertexCount != that.vertexCount){
+        if (this.vertexCount != that.vertexCount) {
             return false;
         }
 

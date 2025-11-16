@@ -1,9 +1,8 @@
 package ru.nsu.ziabkin.graph;
 
-import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class IncidenceMatrixGraph implements Graph {
     private int[][] incidenceMatrix;
@@ -19,8 +18,12 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public void addVertex(int vertex) {
-        if (vertex < 0) return;
-        if (vertex < vertexCount) return;
+        if (vertex < 0) {
+            return;
+        }
+        if (vertex < vertexCount) {
+            return;
+        }
 
         int newVertexCount = vertex + 1;
         int colCapacity = incidenceMatrix.length > 0 ? incidenceMatrix[0].length : Math.max(1, edgeCount);
