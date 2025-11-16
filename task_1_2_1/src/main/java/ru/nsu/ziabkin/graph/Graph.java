@@ -4,13 +4,10 @@ import java.util.List;
 
 /**
  * Represents a generic directed graph interface.
- * <p>
  * Provides basic operations for manipulating vertices and edges,
  * as well as utility methods for inspecting graph structure.
- * </p>
- *
- * <p>Implementations may represent graphs using adjacency lists,
- * adjacency matrices, incidence matrices, or any other internal structure.</p>
+ * Implementations may represent graphs using adjacency lists,
+ * adjacency matrices, incidence matrices, or any other internal structure.
  */
 public interface Graph {
 

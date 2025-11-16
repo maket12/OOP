@@ -1,15 +1,13 @@
 package ru.nsu.ziabkin.graph;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 /**
- * Implementation of the {@link Graph} interface using an adjacency matrix.
- * <p>
- * The graph is directed: an edge from {@code v1} to {@code v2} is represented as
- * {@code adjacencyMatrix[v1][v2] = true}.
- * <p>
+ * Implementation of the {Graph} interface using an adjacency matrix.
+ * The graph is directed: an edge from {v1} to {v2} is represented as
+ * {adjacencyMatrix[v1][v2] = true}.
  * The matrix expands dynamically when new vertices are added.
  */
 public class AdjacencyMatrixGraph implements Graph {

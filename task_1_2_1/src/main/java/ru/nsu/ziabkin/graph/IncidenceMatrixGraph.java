@@ -5,14 +5,8 @@ import java.util.List;
 import java.util.Collections;
 
 /**
- * Implementation of the {@link Graph} interface using an incidence matrix.
- * <p>
- * The matrix has size {@code vertexCount × edgeCount}, and for each edge column:
- * <ul>
- *   <li>the source vertex contains {@code 1}</li>
- *   <li>the target vertex contains {@code -1}</li>
- *   <li>all other vertices contain {@code 0}</li>
- * </ul>
+ * Implementation of the {Graph} interface using an incidence matrix.
+ * The matrix has size {vertexCount × edgeCount}
  * The graph is directed.
  */
 public class IncidenceMatrixGraph implements Graph {
@@ -56,7 +50,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public void removeVertex(int vertex) {
-        if (vertex < 0 || vertex >= vertexCount) return;
+        if (vertex < 0 || vertex >= vertexCount) {
+            return;
+        }
 
         for (int j = edgeCount - 1; j >= 0; j--) {
             if (incidenceMatrix[vertex][j] != 0) {
@@ -73,7 +69,9 @@ public class IncidenceMatrixGraph implements Graph {
         int[][] newMatrix = new int[vertexCount - 1][incidenceMatrix[0].length];
         int dst = 0;
         for (int i = 0; i < vertexCount; i++) {
-            if (i == vertex) continue;
+            if (i == vertex) {
+                continue;
+            }
             System.arraycopy(incidenceMatrix[i], 0, newMatrix[dst++], 0, edgeCount);
         }
         incidenceMatrix = newMatrix;
@@ -82,9 +80,15 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public void addEdge(int vertex1, int vertex2) {
-        if (vertex1 < 0 || vertex2 < 0) return;
-        if (vertex1 >= vertexCount) addVertex(vertex1);
-        if (vertex2 >= vertexCount) addVertex(vertex2);
+        if (vertex1 < 0 || vertex2 < 0) {
+            return;
+        }
+        if (vertex1 >= vertexCount) {
+            addVertex(vertex1);
+        }
+        if (vertex2 >= vertexCount) {
+            addVertex(vertex2);
+        }
 
         ensureEdgeCapacity(edgeCount + 1);
 
@@ -97,7 +101,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public void removeEdge(int vertex1, int vertex2) {
-        if (vertex1 < 0 || vertex2 < 0 || vertex1 >= vertexCount || vertex2 >= vertexCount) return;
+        if (vertex1 < 0 || vertex2 < 0 || vertex1 >= vertexCount || vertex2 >= vertexCount) {
+            return;
+        }
 
         for (int j = 0; j < edgeCount; j++) {
             if (incidenceMatrix[vertex1][j] == 1 && incidenceMatrix[vertex2][j] == -1) {
@@ -116,7 +122,9 @@ public class IncidenceMatrixGraph implements Graph {
     @Override
     public List<Integer> getNeighbors(int vertex) {
         List<Integer> neighbors = new ArrayList<>();
-        if (vertex < 0 || vertex >= vertexCount) return Collections.emptyList();
+        if (vertex < 0 || vertex >= vertexCount) {
+            return Collections.emptyList();
+        }
 
         for (int j = 0; j < edgeCount; j++) {
             if (incidenceMatrix[vertex][j] == 1) {
@@ -133,9 +141,15 @@ public class IncidenceMatrixGraph implements Graph {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof IncidenceMatrixGraph other)) return false;
-        if (vertexCount != other.vertexCount) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof IncidenceMatrixGraph other)) {
+            return false;
+        }
+        if (vertexCount != other.vertexCount) {
+            return false;
+        }
 
         for (int v = 0; v < vertexCount; v++) {
             List<Integer> thisNeighbors = getNeighbors(v);
@@ -179,7 +193,9 @@ public class IncidenceMatrixGraph implements Graph {
 
     private void ensureEdgeCapacity(int needed) {
         int colCapacity = (vertexCount == 0) ? 0 : incidenceMatrix[0].length;
-        if (needed <= colCapacity) return;
+        if (needed <= colCapacity) {
+            return;
+        }
 
         int newCap = Math.max(1, Math.max(needed, colCapacity * 2));
         int[][] newMatrix = new int[vertexCount][newCap];

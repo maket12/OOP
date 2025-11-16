@@ -9,28 +9,17 @@ import java.util.List;
 /**
  * Performs topological sorting of a directed graph using
  * a depth-first search (DFS) approach.
- * <p>
- * The algorithm uses color marking to detect cycles:
- * <ul>
- *     <li><b>WHITE (0)</b> — vertex not yet visited</li>
- *     <li><b>GRAY (1)</b> — vertex is currently in recursion stack</li>
- *     <li><b>BLACK (2)</b> — vertex and all its descendants processed</li>
- * </ul>
+ * The algorithm uses color marking to detect cycles
  * If a back edge to a GRAY vertex is found, a cycle exists in the graph.
- * </p>
- * <p>
  * The result of sorting includes the list of vertices in topological order
  * and a flag indicating whether the graph is acyclic.
- * </p>
  */
 public class TopologicalSorter {
 
     /**
      * Represents the result of topological sorting.
-     * <p>
      * Contains both the computed vertex order and a flag
      * showing whether the input graph is acyclic.
-     * </p>
      */
     public static final class Result {
         private final List<Integer> order;
@@ -68,10 +57,8 @@ public class TopologicalSorter {
 
     /**
      * Performs topological sort on the given graph.
-     * <p>
      * The algorithm runs in O(V + E) time using DFS traversal.
      * It also detects cycles by tracking recursion stack (GRAY vertices).
-     * </p>
      *
      * @param graph the directed graph to sort
      * @return {@link Result} containing the vertex order and acyclicity flag
@@ -94,10 +81,8 @@ public class TopologicalSorter {
 
     /**
      * Recursive depth-first traversal used for topological sorting.
-     * <p>
      * Marks vertices with color states (WHITE, GRAY, BLACK) and
      * adds them to the output stack when fully processed.
-     * </p>
      *
      * @param graph    the graph being traversed
      * @param v        current vertex

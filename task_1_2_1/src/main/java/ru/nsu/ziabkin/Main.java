@@ -13,13 +13,7 @@ import java.util.Scanner;
  * Entry point for the application that allows a user
  * to construct a graph, load it from a file, or enter it manually,
  * and then perform a topological sort on the resulting structure.
- * <p>
  * The program supports three graph implementations:
- * <ul>
- *     <li>{@link AdjacencyMapGraph}</li>
- *     <li>{@link AdjacencyMatrixGraph}</li>
- *     <li>{@link IncidenceMatrixGraph}</li>
- * </ul>
  * The user selects the graph type and the input method (file or manual),
  * after which the graph is sorted.
  */
