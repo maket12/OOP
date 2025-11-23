@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 class AdjacencyMatrixGraphTest {
     private AdjacencyMatrixGraph makeGraph(int size) {
         AdjacencyMatrixGraph g = new AdjacencyMatrixGraph();
-        for (int i = 0; i < size; i++) g.addVertex(i);
+        for (int i = 0; i < size; i++) {
+            g.addVertex(i);
+        }
         return g;
     }
 
