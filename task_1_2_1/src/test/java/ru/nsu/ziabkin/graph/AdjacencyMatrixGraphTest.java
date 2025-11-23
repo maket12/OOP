@@ -25,11 +25,7 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     void testTopologicalSort() {
-        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
-        graph.addVertex(0);
-        graph.addVertex(1);
-        graph.addVertex(2);
-
+        AdjacencyMatrixGraph graph = makeGraph(3);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
 
@@ -39,27 +35,22 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     void testEqualsGraphs() {
-        AdjacencyMatrixGraph g1 = new AdjacencyMatrixGraph(3);
-        g1.addVertex(0);
-        g1.addVertex(1);
+        AdjacencyMatrixGraph g1 = makeGraph(3);
         g1.addEdge(0, 1);
 
-        AdjacencyMatrixGraph g2 = new AdjacencyMatrixGraph(3);
-        g2.addVertex(0);
-        g2.addVertex(1);
+        AdjacencyMatrixGraph g2 = makeGraph(3);
         g2.addEdge(0, 1);
 
         Assertions.assertEquals(g1, g2);
 
         g2.addVertex(2);
+        g2.addVertex(3);
         Assertions.assertNotEquals(g1, g2);
     }
 
     @Test
     void testToString() {
-        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(2);
-        graph.addVertex(0);
-        graph.addVertex(1);
+        AdjacencyMatrixGraph graph = makeGraph(2);
         graph.addEdge(0, 1);
 
         String output = graph.toString();
