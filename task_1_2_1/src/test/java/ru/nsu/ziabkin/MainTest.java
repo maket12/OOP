@@ -37,4 +37,18 @@ class MainTest {
             System.setIn(originalIn);
         }
     }
+
+    @Test
+    void testEnterGraphManuallyMethodExists() {
+        assertDoesNotThrow(() -> {
+            Main.class.getDeclaredMethod("enterGraphManually", java.util.Scanner.class);
+        });
+    }
+
+    @Test
+    void testAddSingleEdgeMethodExists() {
+        assertDoesNotThrow(() -> {
+            Main.class.getDeclaredMethod("addSingleEdge", java.util.Scanner.class, Graph.class);
+        });
+    }
 }
