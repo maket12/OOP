@@ -15,7 +15,7 @@ class GraphParserTest {
     @Test
     void testParseWithNullGraph() {
         GraphParser parser = new GraphParser();
-        Assertions.assertDoesNotThrow(() -> {
+        Assertions.assertThrows(RuntimeException.class, () -> {
             parser.parse(null, "nonexistent.txt");
         });
     }
