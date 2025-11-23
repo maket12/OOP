@@ -14,6 +14,39 @@ class IncidenceMatrixGraphTest {
     }
 
     @Test
+    void testAddVertex() {
+        IncidenceMatrixGraph graph = new IncidenceMatrixGraph(0, 0);
+
+        graph.addVertex(0);
+
+        Assertions.assertEquals(1, graph.getVertexCount());
+
+        graph.addVertex(1);
+        Assertions.assertEquals(2, graph.getVertexCount());
+
+        List<Integer> neighbors = graph.getNeighbors(0);
+        Assertions.assertNotNull(neighbors);
+        Assertions.assertEquals(0, neighbors.size());
+    }
+
+    @Test
+    void testAddEdge() {
+        IncidenceMatrixGraph graph = makeGraph(3);
+
+        graph.addEdge(0, 1);
+
+        List<Integer> neighbors0 = graph.getNeighbors(0);
+        List<Integer> neighbors1 = graph.getNeighbors(1);
+
+        Assertions.assertTrue(neighbors0.contains(1));
+        Assertions.assertEquals(0, neighbors1.size());
+
+        graph.addEdge(1, 2);
+        List<Integer> neighbors1After = graph.getNeighbors(1);
+        Assertions.assertTrue(neighbors1After.contains(2));
+    }
+
+    @Test
     void testAddVertexAndEdge() {
         IncidenceMatrixGraph graph = makeGraph(3);
         graph.addEdge(0, 1);
