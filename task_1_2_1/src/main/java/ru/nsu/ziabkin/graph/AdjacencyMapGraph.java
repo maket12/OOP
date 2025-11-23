@@ -100,4 +100,9 @@ public class AdjacencyMapGraph implements Graph {
     public int getVertexCount() {
         return adjacencyList.size();
     }
+
+    @Override
+    public List<Integer> topologicalSort() {
+        return new TopologicalSorter().sort(this).order();
+    }
 }

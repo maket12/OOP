@@ -209,4 +209,10 @@ public class IncidenceMatrixGraph implements Graph {
         }
         incidenceMatrix = newMatrix;
     }
+
+    @Override
+    public List<Integer> topologicalSort() {
+        return new TopologicalSorter().sort(this).order();
+    }
+
 }

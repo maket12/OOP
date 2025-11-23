@@ -114,4 +114,10 @@ public class AdjacencyMatrixGraph implements Graph {
     public int getVertexCount() {
         return vertexCount;
     }
+
+    @Override
+    public List<Integer> topologicalSort() {
+        return new TopologicalSorter().sort(this).order();
+    }
+
 }
