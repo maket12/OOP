@@ -3,12 +3,12 @@ package ru.nsu.ziabkin.graph.parser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import ru.nsu.ziabkin.graph.AdjacencyMapGraph;
-import ru.nsu.ziabkin.graph.Graph;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import ru.nsu.ziabkin.graph.AdjacencyMapGraph;
+import ru.nsu.ziabkin.graph.Graph;
+
 
 class GraphParserTest {
 
