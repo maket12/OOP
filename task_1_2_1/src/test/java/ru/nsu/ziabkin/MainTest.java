@@ -1,17 +1,15 @@
 package ru.nsu.ziabkin;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class MainTest {
 
     @Test
     void testMainClassCanBeInstantiated() {
-        assertDoesNotThrow(() -> new Main());
+        Assertions.assertDoesNotThrow(() -> new Main());
     }
 
     @Test
@@ -21,7 +19,7 @@ class MainTest {
 
         try {
             System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-            assertDoesNotThrow(() -> Main.main(new String[]{}));
+            Assertions.assertDoesNotThrow(() -> Main.main(new String[]{}));
         } finally {
             System.setIn(originalIn);
         }
@@ -34,7 +32,7 @@ class MainTest {
 
         try {
             System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-            assertDoesNotThrow(() -> Main.main(new String[]{}));
+            Assertions.assertDoesNotThrow(() -> Main.main(new String[]{}));
         } finally {
             System.setIn(originalIn);
         }
