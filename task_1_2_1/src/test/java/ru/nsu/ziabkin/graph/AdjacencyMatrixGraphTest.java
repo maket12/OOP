@@ -5,13 +5,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class AdjacencyMatrixGraphTest {
+    private AdjacencyMatrixGraph makeGraph(int size) {
+        AdjacencyMatrixGraph g = new AdjacencyMatrixGraph();
+        for (int i = 0; i < size; i++) g.addVertex(i);
+        return g;
+    }
 
     @Test
     void testAddVertexAndEdge() {
-        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
-        graph.addVertex(0);
-        graph.addVertex(1);
-
+        AdjacencyMatrixGraph graph = makeGraph(3);
         graph.addEdge(0, 1);
 
         List<Integer> neighbors0 = graph.getNeighbors(0);

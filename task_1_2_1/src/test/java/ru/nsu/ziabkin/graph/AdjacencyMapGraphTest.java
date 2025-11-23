@@ -4,11 +4,11 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class AdjacencyListGraphTest {
+class AdjacencyMapGraphTest {
 
     @Test
     void testAddVertexAndEdge() {
-        Graph graph = new AdjacencyListGraph();
+        Graph graph = new AdjacencyMapGraph();
         graph.addVertex(0);
         graph.addVertex(1);
 
@@ -23,7 +23,7 @@ class AdjacencyListGraphTest {
 
     @Test
     void testTopologicalSort() {
-        Graph graph = new AdjacencyListGraph();
+        Graph graph = new AdjacencyMapGraph();
         graph.addVertex(0);
         graph.addVertex(1);
         graph.addVertex(2);
@@ -37,12 +37,12 @@ class AdjacencyListGraphTest {
 
     @Test
     void testEqualsGraphs() {
-        AdjacencyListGraph g1 = new AdjacencyListGraph();
+        AdjacencyMapGraph g1 = new AdjacencyMapGraph();
         g1.addVertex(0);
         g1.addVertex(1);
         g1.addEdge(0, 1);
 
-        AdjacencyListGraph g2 = new AdjacencyListGraph();
+        AdjacencyMapGraph g2 = new AdjacencyMapGraph();
         g2.addVertex(0);
         g2.addVertex(1);
         g2.addEdge(0, 1);
@@ -55,7 +55,7 @@ class AdjacencyListGraphTest {
 
     @Test
     void testToString() {
-        AdjacencyListGraph graph = new AdjacencyListGraph();
+        AdjacencyMapGraph graph = new AdjacencyMapGraph();
         graph.addVertex(0);
         graph.addVertex(1);
         graph.addEdge(0, 1);
