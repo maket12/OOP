@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import ru.nsu.ziabkin.graph.sorter.TopologicalSorter;
+
 
 /**
  * A graph implementation based on an adjacency map, where each vertex

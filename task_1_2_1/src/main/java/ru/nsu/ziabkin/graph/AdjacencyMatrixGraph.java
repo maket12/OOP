@@ -3,6 +3,7 @@ package ru.nsu.ziabkin.graph;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import ru.nsu.ziabkin.graph.sorter.TopologicalSorter;
 
 /**
  * Implementation of the {Graph} interface using an adjacency matrix.

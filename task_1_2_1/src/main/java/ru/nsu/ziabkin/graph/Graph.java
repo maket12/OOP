@@ -85,4 +85,11 @@ public interface Graph {
      * @return number of vertices
      */
     int getVertexCount();
+
+    /**
+     * Returns sorted list of graph's vertices
+     *
+     * @return sorted list of vertices
+     */
+    List<Integer> topologicalSort();
 }
