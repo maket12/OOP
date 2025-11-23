@@ -47,6 +47,51 @@ class IncidenceMatrixGraphTest {
     }
 
     @Test
+    void testGetVertexCount() {
+        // Тест для пустого графа
+        IncidenceMatrixGraph emptyGraph = new IncidenceMatrixGraph(0, 0);
+        Assertions.assertEquals(0, emptyGraph.getVertexCount());
+
+        // Тест для графа с начальным размером
+        IncidenceMatrixGraph graphWithSize = new IncidenceMatrixGraph(5, 0);
+        Assertions.assertEquals(5, graphWithSize.getVertexCount());
+
+        // Тест после добавления вершин
+        IncidenceMatrixGraph graph = new IncidenceMatrixGraph(0, 0);
+        graph.addVertex(0);
+        Assertions.assertEquals(1, graph.getVertexCount());
+
+        graph.addVertex(1);
+        Assertions.assertEquals(2, graph.getVertexCount());
+
+        graph.addVertex(5); // Добавляем вершину с большим индексом
+        Assertions.assertEquals(6, graph.getVertexCount()); // Должно быть 6 вершин (0,1,2,3,4,5)
+
+        // Тест после удаления вершины
+        graph.removeVertex(2);
+        Assertions.assertEquals(5, graph.getVertexCount());
+    }
+
+    @Test
+    void testEnsureEdgeCapacity() {
+        IncidenceMatrixGraph graph = new IncidenceMatrixGraph(3, 0);
+
+        graph.addEdge(0, 1);
+
+        List<Integer> neighbors0 = graph.getNeighbors(0);
+        Assertions.assertTrue(neighbors0.contains(1));
+
+        graph.addEdge(1, 2);
+        graph.addEdge(0, 2);
+        graph.addEdge(2, 0);
+
+        Assertions.assertTrue(graph.getNeighbors(0).contains(1));
+        Assertions.assertTrue(graph.getNeighbors(0).contains(2));
+        Assertions.assertTrue(graph.getNeighbors(1).contains(2));
+        Assertions.assertTrue(graph.getNeighbors(2).contains(0));
+    }
+
+    @Test
     void testAddVertexAndEdge() {
         IncidenceMatrixGraph graph = makeGraph(3);
         graph.addEdge(0, 1);
