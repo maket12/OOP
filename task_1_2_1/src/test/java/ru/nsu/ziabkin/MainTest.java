@@ -40,14 +40,14 @@ class MainTest {
 
     @Test
     void testEnterGraphManuallyMethodExists() {
-        assertDoesNotThrow(() -> {
+        Assertions.assertDoesNotThrow(() -> {
             Main.class.getDeclaredMethod("enterGraphManually", java.util.Scanner.class);
         });
     }
 
     @Test
     void testAddSingleEdgeMethodExists() {
-        assertDoesNotThrow(() -> {
+        Assertions.assertDoesNotThrow(() -> {
             Main.class.getDeclaredMethod("addSingleEdge", java.util.Scanner.class, Graph.class);
         });
     }
