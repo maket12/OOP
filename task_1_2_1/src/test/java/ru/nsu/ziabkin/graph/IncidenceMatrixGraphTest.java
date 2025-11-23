@@ -30,6 +30,27 @@ class IncidenceMatrixGraphTest {
     }
 
     @Test
+    void testRemoveVertex() {
+        IncidenceMatrixGraph graph = makeGraph(3);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+
+        Assertions.assertEquals(3, graph.getVertexCount());
+
+        graph.removeVertex(1);
+        Assertions.assertEquals(2, graph.getVertexCount());
+
+        List<Integer> neighbors0 = graph.getNeighbors(0);
+        Assertions.assertEquals(0, neighbors0.size());
+
+        graph.removeVertex(5);
+        Assertions.assertEquals(2, graph.getVertexCount());
+
+        graph.removeVertex(-1);
+        Assertions.assertEquals(2, graph.getVertexCount());
+    }
+
+    @Test
     void testAddEdge() {
         IncidenceMatrixGraph graph = makeGraph(3);
 
@@ -47,16 +68,32 @@ class IncidenceMatrixGraphTest {
     }
 
     @Test
+    void testRemoveEdge() {
+        IncidenceMatrixGraph graph = makeGraph(3);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+
+        Assertions.assertTrue(graph.getNeighbors(0).contains(1));
+        Assertions.assertTrue(graph.getNeighbors(1).contains(2));
+
+        graph.removeEdge(0, 1);
+        Assertions.assertFalse(graph.getNeighbors(0).contains(1));
+
+        graph.removeEdge(0, 2);
+        graph.removeEdge(5, 6);
+
+        graph.removeEdge(-1, 0);
+        graph.removeEdge(0, -1);
+    }
+
+    @Test
     void testGetVertexCount() {
-        // Тест для пустого графа
         IncidenceMatrixGraph emptyGraph = new IncidenceMatrixGraph(0, 0);
         Assertions.assertEquals(0, emptyGraph.getVertexCount());
 
-        // Тест для графа с начальным размером
         IncidenceMatrixGraph graphWithSize = new IncidenceMatrixGraph(5, 0);
         Assertions.assertEquals(5, graphWithSize.getVertexCount());
 
-        // Тест после добавления вершин
         IncidenceMatrixGraph graph = new IncidenceMatrixGraph(0, 0);
         graph.addVertex(0);
         Assertions.assertEquals(1, graph.getVertexCount());
@@ -64,10 +101,9 @@ class IncidenceMatrixGraphTest {
         graph.addVertex(1);
         Assertions.assertEquals(2, graph.getVertexCount());
 
-        graph.addVertex(5); // Добавляем вершину с большим индексом
-        Assertions.assertEquals(6, graph.getVertexCount()); // Должно быть 6 вершин (0,1,2,3,4,5)
+        graph.addVertex(5);
+        Assertions.assertEquals(6, graph.getVertexCount());
 
-        // Тест после удаления вершины
         graph.removeVertex(2);
         Assertions.assertEquals(5, graph.getVertexCount());
     }
