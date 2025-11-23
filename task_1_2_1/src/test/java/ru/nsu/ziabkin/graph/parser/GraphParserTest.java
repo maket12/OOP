@@ -7,7 +7,7 @@ class GraphParserTest {
     @Test
     void testParsing() {
         parser = new GraphParser();
-        res = parser.parse(null, "")
-        Assertions.assertEquals(null, res)
+        res = parser.parse(null, "");
+        Assertions.assertEquals(null, res);
     }
 }
