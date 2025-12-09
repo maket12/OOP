@@ -12,6 +12,9 @@ jobs:
   build:
     permissions: write-all
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./${{ github.event.pull_request.title }}
     steps:
       - uses: actions/checkout@v3
       
@@ -45,8 +48,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          folder: ./task_1_5_1/build/docs/javadoc
-          target-folder: task_1_5_1
+          folder: ${{ github.event.pull_request.title }}/build/docs/javadoc
+          target-folder: ${{ github.event.pull_request.title }}
 
   checkstyle:
     runs-on: ubuntu-latest
