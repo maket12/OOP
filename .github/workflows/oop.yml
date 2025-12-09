@@ -48,8 +48,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          folder: ${{ github.event.pull_request.title }}/build/docs/javadoc
-          target-folder: ${{ github.event.pull_request.title }}
+          folder: ./task_1_5_1/build/docs/javadoc
+          target-folder: task_1_5_1
 
   checkstyle:
     runs-on: ubuntu-latest
