@@ -73,6 +73,9 @@ public final class Table implements Element {
         }
     }
 
+    /*
+     * to markdown
+     */
     @Override
     public String toMarkdown() {
         if (rows.isEmpty()) {
@@ -200,11 +203,17 @@ public final class Table implements Element {
         }
     }
 
+    /*
+     * to string(markdown)
+     */
     @Override
     public String toString() {
         return toMarkdown();
     }
 
+    /*
+     * allow equal table elements
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -218,6 +227,9 @@ public final class Table implements Element {
                 && Objects.equals(rows, table.rows);
     }
 
+    /*
+     * get hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hash(alignments, rows);

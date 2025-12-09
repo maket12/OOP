@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
  * Tests for base class Element.
  */
 public class ElementTest {
+    /*
+     * Testing toMarkdown method
+     */
     @Test
     public void anonymousElementReturnsItsMarkdown() {
         Element e = () -> "markdown";

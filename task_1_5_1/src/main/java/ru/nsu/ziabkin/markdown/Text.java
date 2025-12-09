@@ -35,6 +35,7 @@ public abstract class Text implements Element {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         Text text = (Text) o;
         return value.equals(text.value);
     }
@@ -50,8 +51,14 @@ public abstract class Text implements Element {
             super(value);
         }
 
+
+        /*
+         * to markdown
+         */
         @Override
-        public String toMarkdown() { return value; }
+        public String toMarkdown() {
+            return value;
+        }
     }
 
     public static final class Bold extends Text {
@@ -59,6 +66,9 @@ public abstract class Text implements Element {
             super(value);
         }
 
+        /*
+         * to markdown
+         */
         @Override
         public String toMarkdown() {
             return "**" + value + "**";
@@ -70,6 +80,9 @@ public abstract class Text implements Element {
             super(value);
         }
 
+        /*
+         * to markdown
+         */
         @Override
         public String toMarkdown() {
             return "*" + value + "*";
@@ -81,6 +94,9 @@ public abstract class Text implements Element {
             super(value);
         }
 
+        /*
+         * to markdown
+         */
         @Override
         public String toMarkdown() {
             return "~~" + value + "~~";
@@ -92,6 +108,9 @@ public abstract class Text implements Element {
             super(value);
         }
 
+        /*
+         * to markdown
+         */
         @Override
         public String toMarkdown() {
             return "`" + value + "`";
