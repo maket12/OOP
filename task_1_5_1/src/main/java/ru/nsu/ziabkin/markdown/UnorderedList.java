@@ -1,0 +1,70 @@
+package ru.nsu.ziabkin.markdown;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/*
+ * Represents UnorderedList element
+ */
+final class UnorderedList implements Element {
+    private final List<Element> items;
+
+    private UnorderedList(List<Element> items) {
+        this.items = List.copyOf(items);
+    }
+
+    public static class Builder {
+        private final List<Element> items = new ArrayList<>();
+
+        public Builder addItem(String text) {
+            return addItem(new Text.Plain(text));
+        }
+
+        public Builder addItem(Element element) {
+            items.add(Objects.requireNonNull(element));
+            return this;
+        }
+
+        public UnorderedList build() {
+            return new UnorderedList(items);
+        }
+    }
+
+    @Override
+    public String toMarkdown() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < items.size(); i++) {
+            if (i > 0) {
+                sb.append('\n');
+            }
+            sb.append("- ").append(items.get(i).toMarkdown());
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return toMarkdown();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof UnorderedList)) {
+            return false;
+        }
+
+        UnorderedList that = (UnorderedList) o;
+
+        return Objects.equals(items, that.items);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(items);
+    }
+}
