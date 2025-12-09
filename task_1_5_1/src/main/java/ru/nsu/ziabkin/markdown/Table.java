@@ -75,6 +75,7 @@ public final class Table implements Element {
 
     /**
      * to markdown
+     *
      * @return markdown implementation
      */
     @Override
@@ -206,6 +207,7 @@ public final class Table implements Element {
 
     /**
      * to string(markdown)
+     *
      * @return Markdown implementation
      */
     @Override
@@ -215,6 +217,7 @@ public final class Table implements Element {
 
     /**
      * allow equal table elements
+     *
      * @return result of equality
      */
     @Override
@@ -232,6 +235,7 @@ public final class Table implements Element {
 
     /**
      * get hash code
+     *
      * @return hash code of element
      */
     @Override

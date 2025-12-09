@@ -3,11 +3,11 @@ package ru.nsu.ziabkin.markdown;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/*
+/**
  * Tests for base class Element.
  */
 public class ElementTest {
-    /*
+    /**
      * Testing toMarkdown method
      */
     @Test
@@ -16,7 +16,7 @@ public class ElementTest {
         Assertions.assertEquals("markdown", e.toMarkdown());
     }
 
-    /*
+    /**
      * Testing(check class)
      */
     @Test

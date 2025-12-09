@@ -4,10 +4,15 @@ package ru.nsu.ziabkin;
 import ru.nsu.ziabkin.markdown.Table;
 import ru.nsu.ziabkin.markdown.Text;
 
-/*
+/**
  * Demonstration of the program
  */
 public class Demo {
+    /**
+     * main method for demonstration
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Table.Builder tableBuilder = new Table.Builder()
                 .withAlignments(Table.ALIGN_RIGHT, Table.ALIGN_LEFT)

@@ -6,6 +6,7 @@ package ru.nsu.ziabkin.markdown;
 public interface Element {
     /**
      * converts method into markdown
+     *
      * @return Markdown implementation
      */
     String toMarkdown();
