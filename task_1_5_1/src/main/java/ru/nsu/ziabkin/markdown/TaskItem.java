@@ -18,6 +18,9 @@ final class TaskItem implements Element {
         this.done = done;
     }
 
+    /*
+     * converts method into markdown
+     */
     @Override
     public String toMarkdown() {
         return "- [" + (done ? "x" : " ") + "] " + text.toMarkdown();
@@ -40,8 +43,8 @@ final class TaskItem implements Element {
 
         TaskItem taskItem = (TaskItem) o;
 
-        return done == taskItem.done &&
-                Objects.equals(text, taskItem.text);
+        return done == taskItem.done
+                && Objects.equals(text, taskItem.text);
     }
 
     @Override

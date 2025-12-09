@@ -20,6 +20,9 @@ final class Link implements Element {
         this.title = title;
     }
 
+    /*
+     * converts method into markdown
+     */
     @Override
     public String toMarkdown() {
         StringBuilder sb = new StringBuilder();
@@ -49,9 +52,9 @@ final class Link implements Element {
 
         Link link = (Link) o;
 
-        return Objects.equals(text, link.text) &&
-                Objects.equals(url, link.url) &&
-                Objects.equals(title, link.title);
+        return Objects.equals(text, link.text)
+                && Objects.equals(url, link.url)
+                && Objects.equals(title, link.title);
     }
 
     @Override

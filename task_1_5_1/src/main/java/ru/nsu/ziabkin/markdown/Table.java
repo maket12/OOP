@@ -1,12 +1,13 @@
 package ru.nsu.ziabkin.markdown;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /*
  * Represents Table element
  */
 public final class Table implements Element {
-
     public static final int ALIGN_LEFT = -1;
     public static final int ALIGN_CENTER = 0;
     public static final int ALIGN_RIGHT = 1;
@@ -14,6 +15,9 @@ public final class Table implements Element {
     private final List<Integer> alignments;
     private final List<List<Element>> rows;
 
+    /*
+     * Represents Table element
+     */
     Table(List<Integer> alignments, List<List<Element>> rows) {
         this.alignments = List.copyOf(alignments);
         this.rows = rows.stream()
@@ -145,12 +149,16 @@ public final class Table implements Element {
                     segment = "-".repeat(width - 1) + ":";
                     break;
                 case ALIGN_CENTER:
-                    if (width < 3) width = 3;
+                    if (width < 3) {
+                        width = 3;
+                    }
                     segment = ":" + "-".repeat(width - 2) + ":";
                     break;
                 case ALIGN_LEFT:
                 default:
-                    if (width < 1) width = 1;
+                    if (width < 1) {
+                        width = 1;
+                    }
                     segment = "-".repeat(width);
                     break;
             }
@@ -206,8 +214,8 @@ public final class Table implements Element {
             return false;
         }
         Table table = (Table) o;
-        return Objects.equals(alignments, table.alignments) &&
-                Objects.equals(rows, table.rows);
+        return Objects.equals(alignments, table.alignments)
+                && Objects.equals(rows, table.rows);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package ru.nsu.ziabkin.markdown;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for TaskItem and TaskList.

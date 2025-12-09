@@ -1,7 +1,7 @@
 package ru.nsu.ziabkin.markdown;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for Table.
@@ -26,14 +26,22 @@ public class TableTest {
         Assertions.assertEquals("| ----: | ------ |", lines[1]);
 
         for (int i = 0; i < lines.length; i++) {
-            Assertions.assertTrue(lines[i].startsWith("|"), "Row " + i + " must starts with |");
-            Assertions.assertTrue(lines[i].endsWith("|"), "Row " + i + " must ends with |");
+            Assertions.assertTrue(
+                    lines[i].startsWith("|"),
+                    "Row " + i + " must starts with |");
+            Assertions.assertTrue(
+                    lines[i].endsWith("|"),
+                    "Row " + i + " must ends with |");
         }
 
-        Assertions.assertTrue(lines[1].contains("----:"), "First column must have right pagination");
-        Assertions.assertTrue(lines[1].contains("------"), "Second column must have left pagination");
+        Assertions.assertTrue(lines[1].contains("----:"),
+                "First column must have right pagination");
+        Assertions.assertTrue(
+                lines[1].contains("------"),
+                "Second column must have left pagination");
 
-        Assertions.assertTrue(lines[2].contains("8"), "8 expected in the second row");
+        Assertions.assertTrue(lines[2].contains("8"),
+                "8 expected in the second row");
     }
 
     @Test
@@ -86,6 +94,8 @@ public class TableTest {
 
         Assertions.assertEquals(4, lines.length);
 
-        Assertions.assertFalse(md.contains("R3C1"), "Row is under limit has not to be in the table");
+        Assertions.assertFalse(
+                md.contains("R3C1"),
+                "Row is under limit has not to be in the table");
     }
 }

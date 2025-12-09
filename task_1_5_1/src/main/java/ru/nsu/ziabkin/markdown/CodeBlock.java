@@ -36,6 +36,9 @@ final class CodeBlock implements Element {
         }
     }
 
+    /*
+     * converts method into markdown
+     */
     @Override
     public String toMarkdown() {
         StringBuilder sb = new StringBuilder();
@@ -66,8 +69,8 @@ final class CodeBlock implements Element {
 
         CodeBlock codeBlock = (CodeBlock) o;
 
-        return Objects.equals(language, codeBlock.language) &&
-                Objects.equals(code, codeBlock.code);
+        return Objects.equals(language, codeBlock.language)
+                && Objects.equals(code, codeBlock.code);
     }
 
     @Override

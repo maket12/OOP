@@ -32,6 +32,9 @@ final class TaskList implements Element {
         }
     }
 
+    /*
+     * converts method into markdown
+     */
     @Override
     public String toMarkdown() {
         StringBuilder sb = new StringBuilder();

@@ -48,9 +48,9 @@ final class Image implements Element {
 
         Image image = (Image) o;
 
-        return Objects.equals(altText, image.altText) &&
-                Objects.equals(url, image.url) &&
-                Objects.equals(title, image.title);
+        return Objects.equals(altText, image.altText)
+                && Objects.equals(url, image.url)
+                && Objects.equals(title, image.title);
     }
 
     @Override

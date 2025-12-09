@@ -16,6 +16,9 @@ public abstract class Text implements Element {
         return value;
     }
 
+    /*
+     * converts method into markdown
+     */
     @Override
     public abstract String toMarkdown();
 
@@ -26,8 +29,12 @@ public abstract class Text implements Element {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Text text = (Text) o;
         return value.equals(text.value);
     }
@@ -39,37 +46,55 @@ public abstract class Text implements Element {
 
 
     public static final class Plain extends Text {
-        public Plain(String value) { super(value); }
+        public Plain(String value) {
+            super(value);
+        }
 
         @Override
         public String toMarkdown() { return value; }
     }
 
     public static final class Bold extends Text {
-        public Bold(String value) { super(value); }
+        public Bold(String value) {
+            super(value);
+        }
 
         @Override
-        public String toMarkdown() { return "**" + value + "**"; }
+        public String toMarkdown() {
+            return "**" + value + "**";
+        }
     }
 
     public static final class Italic extends Text {
-        public Italic(String value) { super(value); }
+        public Italic(String value) {
+            super(value);
+        }
 
         @Override
-        public String toMarkdown() { return "*" + value + "*"; }
+        public String toMarkdown() {
+            return "*" + value + "*";
+        }
     }
 
     public static final class Strike extends Text {
-        public Strike(String value) { super(value); }
+        public Strike(String value) {
+            super(value);
+        }
 
         @Override
-        public String toMarkdown() { return "~~" + value + "~~"; }
+        public String toMarkdown() {
+            return "~~" + value + "~~";
+        }
     }
 
     public static final class Code extends Text {
-        public Code(String value) { super(value); }
+        public Code(String value) {
+            super(value);
+        }
 
         @Override
-        public String toMarkdown() { return "`" + value + "`"; }
+        public String toMarkdown() {
+            return "`" + value + "`";
+        }
     }
 }

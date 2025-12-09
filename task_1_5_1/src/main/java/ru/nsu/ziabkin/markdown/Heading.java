@@ -17,6 +17,9 @@ final class Heading implements Element {
         this.content = Objects.requireNonNull(content);
     }
 
+    /*
+     * converts method into markdown
+     */
     @Override
     public String toMarkdown() {
         StringBuilder sb = new StringBuilder();
@@ -40,8 +43,8 @@ final class Heading implements Element {
         }
 
         Heading heading = (Heading) o;
-        return level == heading.level &&
-                Objects.equals(content, heading.content);
+        return level == heading.level
+                && Objects.equals(content, heading.content);
     }
 
     @Override
