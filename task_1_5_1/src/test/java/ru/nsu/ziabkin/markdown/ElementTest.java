@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  */
 public class ElementTest {
     /**
-     * Testing toMarkdown method
+     * Testing toMarkdown method.
      */
     @Test
     public void anonymousElementReturnsItsMarkdown() {
@@ -17,7 +17,7 @@ public class ElementTest {
     }
 
     /**
-     * Testing(check class)
+     * Testing(check class).
      */
     @Test
     void textPlainIsAlsoElement() {

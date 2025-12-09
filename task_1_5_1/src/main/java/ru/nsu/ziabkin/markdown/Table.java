@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Represents Table element
+ * Represents Table element.
  */
 public final class Table implements Element {
     public static final int ALIGN_LEFT = -1;
@@ -15,8 +15,8 @@ public final class Table implements Element {
     private final List<Integer> alignments;
     private final List<List<Element>> rows;
 
-    /*
-     * Represents Table element
+    /**
+     * Represents Table element.
      */
     Table(List<Integer> alignments, List<List<Element>> rows) {
         this.alignments = List.copyOf(alignments);
@@ -74,7 +74,7 @@ public final class Table implements Element {
     }
 
     /**
-     * to markdown
+     * to markdown.
      *
      * @return markdown implementation
      */
@@ -206,7 +206,7 @@ public final class Table implements Element {
     }
 
     /**
-     * to string(markdown)
+     * to string(markdown).
      *
      * @return Markdown implementation
      */
@@ -216,7 +216,7 @@ public final class Table implements Element {
     }
 
     /**
-     * allow equal table elements
+     * allow equal table elements.
      *
      * @return result of equality
      */
@@ -234,7 +234,7 @@ public final class Table implements Element {
     }
 
     /**
-     * get hash code
+     * get hash code.
      *
      * @return hash code of element
      */

@@ -5,13 +5,13 @@ import ru.nsu.ziabkin.markdown.Table;
 import ru.nsu.ziabkin.markdown.Text;
 
 /**
- * Demonstration of the program
+ * Demonstration of the program.
  */
 public class Demo {
     /**
-     * main method for demonstration
+     * main method for demonstration.
      *
-     * @param args
+     * @param args - arguments of table
      */
     public static void main(String[] args) {
         Table.Builder tableBuilder = new Table.Builder()
