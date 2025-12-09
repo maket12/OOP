@@ -111,7 +111,7 @@ public final class Table implements Element {
 
         StringBuilder sb = new StringBuilder();
 
-        appendRow(sb, rendered.getFirst(), widths);
+        appendRow(sb, rendered.get(0), widths);
         sb.append('\n');
 
         appendAlignmentRow(sb, widths);
