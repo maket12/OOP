@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/*
+/**
  * Represents Table element
  */
 public final class Table implements Element {
@@ -73,8 +73,9 @@ public final class Table implements Element {
         }
     }
 
-    /*
+    /**
      * to markdown
+     * @return markdown implementation
      */
     @Override
     public String toMarkdown() {
@@ -203,16 +204,18 @@ public final class Table implements Element {
         }
     }
 
-    /*
+    /**
      * to string(markdown)
+     * @return Markdown implementation
      */
     @Override
     public String toString() {
         return toMarkdown();
     }
 
-    /*
+    /**
      * allow equal table elements
+     * @return result of equality
      */
     @Override
     public boolean equals(Object o) {
@@ -227,8 +230,9 @@ public final class Table implements Element {
                 && Objects.equals(rows, table.rows);
     }
 
-    /*
+    /**
      * get hash code
+     * @return hash code of element
      */
     @Override
     public int hashCode() {

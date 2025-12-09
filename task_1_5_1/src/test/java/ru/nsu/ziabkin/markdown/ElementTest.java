@@ -16,6 +16,9 @@ public class ElementTest {
         Assertions.assertEquals("markdown", e.toMarkdown());
     }
 
+    /*
+     * Testing(check class)
+     */
     @Test
     void textPlainIsAlsoElement() {
         Element e = new Text.Plain("hello");
