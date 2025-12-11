@@ -22,7 +22,7 @@ public final class Heading implements Element {
     }
 
     /*
-     * Converts method into markdown
+     * Converts method into markdown form
      */
     @Override
     public String toMarkdown() {
