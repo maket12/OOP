@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.ziabkin"},{"l":"ru.nsu.ziabkin.markdown"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.ziabkin"},{"l":"ru.nsu.ziabkin.markdown"},{"l":"ru.nsu.ziabkin.markdown.lists"},{"l":"ru.nsu.ziabkin.markdown.structs"},{"l":"ru.nsu.ziabkin.markdown.text"}];updateSearchResults();
