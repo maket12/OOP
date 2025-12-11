@@ -18,13 +18,16 @@ public final class TaskItem implements Element {
         this(new Text.Plain(text), done);
     }
 
+    /*
+     * Implements
+     */
     public TaskItem(Element text, boolean done) {
         this.text = Objects.requireNonNull(text, "task item text must be not null");
         this.done = done;
     }
 
     /*
-     * converts method into markdown
+     * Converts method into markdown
      */
     @Override
     public String toMarkdown() {

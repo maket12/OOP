@@ -18,6 +18,9 @@ public final class Image implements Element {
         this(altText, url, null);
     }
 
+    /*
+     * Image impl
+     */
     public Image(String altText, String url, String title) {
         this.altText = Objects.requireNonNull(altText, "altText must be not null");
         this.url = Objects.requireNonNull(url, "image url must be not null");

@@ -13,12 +13,15 @@ public final class OrderedList implements Element {
     private final List<Element> items;
 
     /*
-     * Ordered list
+     * Constructor of ordered list
      */
     public OrderedList(List<Element> items) {
         this.items = List.copyOf(items);
     }
 
+    /*
+     * Builds the element
+     */
     public static class Builder {
         private final List<Element> items = new ArrayList<>();
 

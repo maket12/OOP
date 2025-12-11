@@ -11,8 +11,8 @@ public final class Heading implements Element {
     private final Element content;
 
     /*
-     * Heading constructor
-    */
+     * Constructor
+     */
     public Heading(int level, Element content) {
         if (level < 1 || level > 6) {
             throw new IllegalArgumentException("Heading level must be between 1 and 6");
@@ -22,7 +22,7 @@ public final class Heading implements Element {
     }
 
     /*
-     * converts method into markdown
+     * Converts method into markdown
      */
     @Override
     public String toMarkdown() {

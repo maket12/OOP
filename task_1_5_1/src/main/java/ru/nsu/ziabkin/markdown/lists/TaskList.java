@@ -18,6 +18,9 @@ public final class TaskList implements Element {
         this.items = List.copyOf(items);
     }
 
+    /*
+     * Builder
+     */
     public static class Builder {
         private final List<TaskItem> items = new ArrayList<>();
 
@@ -37,7 +40,7 @@ public final class TaskList implements Element {
     }
 
     /*
-     * converts method into markdown
+     * Converts method into markdown
      */
     @Override
     public String toMarkdown() {

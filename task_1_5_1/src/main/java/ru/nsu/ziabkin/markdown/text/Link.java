@@ -19,7 +19,7 @@ public final class Link implements Element {
     }
 
     /*
-     * builds link
+     * Builds link
      */
     public Link(Element text, String url, String title) {
         this.text = Objects.requireNonNull(text, "link text must be not null");

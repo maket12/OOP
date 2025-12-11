@@ -20,7 +20,7 @@ public final class BlockQuote implements Element {
     }
 
     /*
-     * builder
+     * Builder
      */
     public static class Builder {
         private final List<Element> lines = new ArrayList<>();

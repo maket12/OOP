@@ -5,7 +5,7 @@ import ru.nsu.ziabkin.markdown.Element;
 
 /*
  * Represents CodeBlock element
-*/
+ */
 public final class CodeBlock implements Element {
     private final String language;
     private final String code;
@@ -20,7 +20,7 @@ public final class CodeBlock implements Element {
 
     /*
      * Builds UnorderedList element
-    */
+     */
     public static class Builder {
         private String language;
         private final StringBuilder code = new StringBuilder();
@@ -34,7 +34,7 @@ public final class CodeBlock implements Element {
         }
 
         /*
-         * add line
+         * Add line
          */
         public Builder addLine(String line) {
             if (!code.isEmpty()) {

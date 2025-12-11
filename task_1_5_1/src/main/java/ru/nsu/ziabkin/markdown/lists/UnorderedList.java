@@ -19,6 +19,9 @@ public final class UnorderedList implements Element {
         this.items = List.copyOf(items);
     }
 
+    /*
+     * Builds the element
+     */
     public static class Builder {
         private final List<Element> items = new ArrayList<>();
 
