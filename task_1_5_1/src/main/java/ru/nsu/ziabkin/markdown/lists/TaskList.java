@@ -6,20 +6,20 @@ import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 
 /**
- * Represents TaskList element
+ * Represents TaskList element.
  */
 public final class TaskList implements Element {
     private final List<TaskItem> items;
 
     /**
-     * Task list
+     * Task list.
      */
     public TaskList(List<TaskItem> items) {
         this.items = List.copyOf(items);
     }
 
     /**
-     * Builder
+     * Builder.
      */
     public static class Builder {
         private final List<TaskItem> items = new ArrayList<>();
@@ -40,7 +40,7 @@ public final class TaskList implements Element {
     }
 
     /**
-     * Converts method into markdown
+     * Converts method into markdown.
      */
     @Override
     public String toMarkdown() {

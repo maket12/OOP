@@ -11,7 +11,7 @@ public final class CodeBlock implements Element {
     private final String code;
 
     /**
-     * Represents CodeBlock element
+     * Represents CodeBlock element.
      */
     public CodeBlock(String language, String code) {
         this.language = language;
@@ -19,14 +19,14 @@ public final class CodeBlock implements Element {
     }
 
     /**
-     * Builds UnorderedList element
+     * Builds UnorderedList element.
      */
     public static class Builder {
         private String language;
         private final StringBuilder code = new StringBuilder();
 
         /**
-         * Use given language
+         * Use given language.
          */
         public Builder withLanguage(String language) {
             this.language = language;
@@ -34,7 +34,7 @@ public final class CodeBlock implements Element {
         }
 
         /**
-         * Add line
+         * Add line.
          */
         public Builder addLine(String line) {
             if (!code.isEmpty()) {

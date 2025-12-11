@@ -5,21 +5,21 @@ import ru.nsu.ziabkin.markdown.Element;
 import ru.nsu.ziabkin.markdown.text.Text;
 
 /**
- * Represents TaskItem element
+ * Represents TaskItem element.
  */
 public final class TaskItem implements Element {
     private final Element text;
     private final boolean done;
 
     /**
-     * Create TaskItem element
+     * Create TaskItem element.
      */
     public TaskItem(String text, boolean done) {
         this(new Text.Plain(text), done);
     }
 
     /**
-     * Implements
+     * Implements.
      */
     public TaskItem(Element text, boolean done) {
         this.text = Objects.requireNonNull(text, "task item text must be not null");
@@ -27,7 +27,7 @@ public final class TaskItem implements Element {
     }
 
     /**
-     * Converts method into markdown
+     * Converts method into markdown.
      */
     @Override
     public String toMarkdown() {

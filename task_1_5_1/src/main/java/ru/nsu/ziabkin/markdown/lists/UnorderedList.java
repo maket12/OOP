@@ -7,20 +7,20 @@ import ru.nsu.ziabkin.markdown.Element;
 import ru.nsu.ziabkin.markdown.text.Text;
 
 /**
- * Represents UnorderedList element
+ * Represents UnorderedList element.
  */
 public final class UnorderedList implements Element {
     private final List<Element> items;
 
     /**
-     * Represents UnorderedList element
+     * Represents UnorderedList element.
      */
     public UnorderedList(List<Element> items) {
         this.items = List.copyOf(items);
     }
 
     /**
-     * Builds the element
+     * Builds the element.
      */
     public static class Builder {
         private final List<Element> items = new ArrayList<>();

@@ -4,7 +4,7 @@ import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 
 /**
- * Represents Link element
+ * Represents Link element.
  */
 public final class Link implements Element {
     private final Element text;
@@ -12,14 +12,14 @@ public final class Link implements Element {
     private final String title;
 
     /**
-     * Represents Link element
+     * Represents Link element.
      */
     public Link(Element text, String url) {
         this(text, url, null);
     }
 
     /**
-     * Builds link
+     * Builds link.
      */
     public Link(Element text, String url, String title) {
         this.text = Objects.requireNonNull(text, "link text must be not null");
@@ -28,7 +28,7 @@ public final class Link implements Element {
     }
 
     /**
-     * converts method into markdown
+     * Converts method into markdown.
      */
     @Override
     public String toMarkdown() {

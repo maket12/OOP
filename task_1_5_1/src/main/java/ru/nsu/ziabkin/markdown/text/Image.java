@@ -4,7 +4,7 @@ import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 
 /**
- * Represents Image element
+ * Represents Image element.
  */
 public final class Image implements Element {
     private final String altText;
@@ -12,14 +12,14 @@ public final class Image implements Element {
     private final String title;
 
     /**
-     * Image
+     * Image.
      */
     public Image(String altText, String url) {
         this(altText, url, null);
     }
 
     /**
-     * Image impl
+     * Image impl.
      */
     public Image(String altText, String url, String title) {
         this.altText = Objects.requireNonNull(altText, "altText must be not null");

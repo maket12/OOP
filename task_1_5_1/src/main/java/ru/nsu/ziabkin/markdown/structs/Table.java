@@ -28,7 +28,7 @@ public final class Table implements Element {
     }
 
     /**
-     * Builder of the element
+     * Builder of the element.
      */
     public static class Builder {
         private final List<Integer> alignments = new ArrayList<>();
@@ -36,7 +36,7 @@ public final class Table implements Element {
         private int rowLimit = Integer.MAX_VALUE;
 
         /**
-         * With align
+         * With align.
          */
         public Builder withAlignments(int... alignments) {
             this.alignments.clear();
@@ -50,7 +50,7 @@ public final class Table implements Element {
         }
 
         /**
-         * Row limit
+         * Row limit.
          */
         public Builder withRowLimit(int rowLimit) {
             if (rowLimit <= 0) {
@@ -61,7 +61,7 @@ public final class Table implements Element {
         }
 
         /**
-         * Add row
+         * Add row.
          */
         public Builder addRow(Object... cells) {
             if (rows.size() >= rowLimit) {
@@ -80,7 +80,7 @@ public final class Table implements Element {
         }
 
         /**
-         * Build
+         * Build.
          */
         public Table build() {
             if (rows.isEmpty()) {

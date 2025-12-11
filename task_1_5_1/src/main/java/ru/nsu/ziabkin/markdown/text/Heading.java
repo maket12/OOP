@@ -4,14 +4,14 @@ import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 
 /**
- * Represents Heading element
+ * Represents Heading element.
  */
 public final class Heading implements Element {
     private final int level;
     private final Element content;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public Heading(int level, Element content) {
         if (level < 1 || level > 6) {
@@ -22,7 +22,7 @@ public final class Heading implements Element {
     }
 
     /**
-     * Converts method into markdown form
+     * Converts method into markdown form.
      */
     @Override
     public String toMarkdown() {

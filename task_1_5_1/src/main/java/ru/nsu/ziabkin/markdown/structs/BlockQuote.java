@@ -7,20 +7,20 @@ import ru.nsu.ziabkin.markdown.Element;
 import ru.nsu.ziabkin.markdown.text.Text;
 
 /**
- * Represents BlockQuote element
+ * Represents BlockQuote element.
  */
 public final class BlockQuote implements Element {
     private final List<Element> lines;
 
     /**
-     * UnorderedList element
+     * UnorderedList element.
      */
     public BlockQuote(List<Element> lines) {
         this.lines = List.copyOf(lines);
     }
 
     /**
-     * Builder
+     * Builder.
      */
     public static class Builder {
         private final List<Element> lines = new ArrayList<>();
