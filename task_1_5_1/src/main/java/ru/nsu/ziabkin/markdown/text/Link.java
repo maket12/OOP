@@ -3,7 +3,7 @@ package ru.nsu.ziabkin.markdown.text;
 import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 
-/*
+/**
  * Represents Link element
  */
 public final class Link implements Element {
@@ -11,14 +11,14 @@ public final class Link implements Element {
     private final String url;
     private final String title;
 
-    /*
+    /**
      * Represents Link element
      */
     public Link(Element text, String url) {
         this(text, url, null);
     }
 
-    /*
+    /**
      * Builds link
      */
     public Link(Element text, String url, String title) {
@@ -27,7 +27,7 @@ public final class Link implements Element {
         this.title = title;
     }
 
-    /*
+    /**
      * converts method into markdown
      */
     @Override

@@ -3,14 +3,14 @@ package ru.nsu.ziabkin.markdown.text;
 import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 
-/*
+/**
  * Represents Heading element
  */
 public final class Heading implements Element {
     private final int level;
     private final Element content;
 
-    /*
+    /**
      * Constructor
      */
     public Heading(int level, Element content) {
@@ -21,7 +21,7 @@ public final class Heading implements Element {
         this.content = Objects.requireNonNull(content,  "content must not be null");
     }
 
-    /*
+    /**
      * Converts method into markdown form
      */
     @Override

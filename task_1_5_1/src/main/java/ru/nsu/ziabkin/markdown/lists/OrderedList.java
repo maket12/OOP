@@ -6,20 +6,20 @@ import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 import ru.nsu.ziabkin.markdown.text.Text;
 
-/*
+/**
  * Represents OrderedList element
  */
 public final class OrderedList implements Element {
     private final List<Element> items;
 
-    /*
+    /**
      * Constructor of ordered list
      */
     public OrderedList(List<Element> items) {
         this.items = List.copyOf(items);
     }
 
-    /*
+    /**
      * Builds the element
      */
     public static class Builder {

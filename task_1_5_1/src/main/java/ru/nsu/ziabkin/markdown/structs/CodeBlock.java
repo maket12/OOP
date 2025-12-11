@@ -3,14 +3,14 @@ package ru.nsu.ziabkin.markdown.structs;
 import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 
-/*
- * Represents CodeBlock element
+/**
+ * Represents a code block element in Markdown.
  */
 public final class CodeBlock implements Element {
     private final String language;
     private final String code;
 
-    /*
+    /**
      * Represents CodeBlock element
      */
     public CodeBlock(String language, String code) {
@@ -18,14 +18,14 @@ public final class CodeBlock implements Element {
         this.code = Objects.requireNonNull(code, "code must be not null");
     }
 
-    /*
+    /**
      * Builds UnorderedList element
      */
     public static class Builder {
         private String language;
         private final StringBuilder code = new StringBuilder();
 
-        /*
+        /**
          * Use given language
          */
         public Builder withLanguage(String language) {
@@ -33,7 +33,7 @@ public final class CodeBlock implements Element {
             return this;
         }
 
-        /*
+        /**
          * Add line
          */
         public Builder addLine(String line) {
@@ -49,9 +49,6 @@ public final class CodeBlock implements Element {
         }
     }
 
-    /*
-     * converts method into markdown
-     */
     @Override
     public String toMarkdown() {
         StringBuilder sb = new StringBuilder();
