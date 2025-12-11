@@ -1,9 +1,9 @@
 package ru.nsu.ziabkin.markdown.structs;
 
-import ru.nsu.ziabkin.markdown.Element;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.Element;
 import ru.nsu.ziabkin.markdown.text.Text;
 
 /**
@@ -37,7 +37,7 @@ public final class Table implements Element {
 
         /*
          * with align
-         */
+        */
         public Builder withAlignments(int... alignments) {
             this.alignments.clear();
             for (int a : alignments) {
@@ -51,7 +51,7 @@ public final class Table implements Element {
 
         /*
          * row limit
-         */
+        */
         public Builder withRowLimit(int rowLimit) {
             if (rowLimit <= 0) {
                 throw new IllegalArgumentException("rowLimit must be > 0");
@@ -62,7 +62,7 @@ public final class Table implements Element {
 
         /*
          * add row
-         */
+        */
         public Builder addRow(Object... cells) {
             if (rows.size() >= rowLimit) {
                 return this;
@@ -81,7 +81,7 @@ public final class Table implements Element {
 
         /*
          * build
-         */
+        */
         public Table build() {
             if (rows.isEmpty()) {
                 throw new IllegalStateException("Table must have at least one row (header)");

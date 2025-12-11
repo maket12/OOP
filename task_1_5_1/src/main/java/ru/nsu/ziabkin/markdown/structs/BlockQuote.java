@@ -6,7 +6,9 @@ import java.util.Objects;
 import ru.nsu.ziabkin.markdown.Element;
 import ru.nsu.ziabkin.markdown.text.Text;
 
-// Represents BlockQuote element
+/*
+ * Represents BlockQuote element
+ */
 public final class BlockQuote implements Element {
     private final List<Element> lines;
 
@@ -17,6 +19,9 @@ public final class BlockQuote implements Element {
         this.lines = List.copyOf(lines);
     }
 
+    /*
+     * builder
+     */
     public static class Builder {
         private final List<Element> lines = new ArrayList<>();
 
