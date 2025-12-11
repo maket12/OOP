@@ -1,9 +1,8 @@
 package ru.nsu.ziabkin.markdown.lists;
 
 import ru.nsu.ziabkin.markdown.Element;
-import ru.nsu.ziabkin.markdown.text.Text;
-
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 /*
  * Represents TaskItem element
@@ -12,6 +11,9 @@ public final class TaskItem implements Element {
     private final Element text;
     private final boolean done;
 
+    /*
+     * Create TaskItem element
+     */
     public TaskItem(String text, boolean done) {
         this(new Text.Plain(text), done);
     }

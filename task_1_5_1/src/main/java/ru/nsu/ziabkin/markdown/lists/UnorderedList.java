@@ -1,11 +1,10 @@
 package ru.nsu.ziabkin.markdown.lists;
 
 import ru.nsu.ziabkin.markdown.Element;
-import ru.nsu.ziabkin.markdown.text.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 /*
  * Represents UnorderedList element
@@ -13,6 +12,9 @@ import java.util.Objects;
 public final class UnorderedList implements Element {
     private final List<Element> items;
 
+    /*
+     * Represents UnorderedList element
+     */
     public UnorderedList(List<Element> items) {
         this.items = List.copyOf(items);
     }

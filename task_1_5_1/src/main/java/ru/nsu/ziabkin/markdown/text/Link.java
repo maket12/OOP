@@ -1,7 +1,6 @@
 package ru.nsu.ziabkin.markdown.text;
 
 import ru.nsu.ziabkin.markdown.Element;
-
 import java.util.Objects;
 
 /*
@@ -12,6 +11,9 @@ public final class Link implements Element {
     private final String url;
     private final String title;
 
+    /*
+     * Represents Link element
+     */
     public Link(Element text, String url) {
         this(text, url, null);
     }
