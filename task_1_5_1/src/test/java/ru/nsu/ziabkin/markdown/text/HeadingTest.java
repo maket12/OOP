@@ -1,4 +1,4 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.text;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

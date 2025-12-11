@@ -1,11 +1,13 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.text;
+
+import ru.nsu.ziabkin.markdown.Element;
 
 import java.util.Objects;
 
 /*
  * Represents Image element
  */
-final class Image implements Element {
+public final class Image implements Element {
     private final String altText;
     private final String url;
     private final String title;
@@ -15,8 +17,8 @@ final class Image implements Element {
     }
 
     public Image(String altText, String url, String title) {
-        this.altText = Objects.requireNonNull(altText);
-        this.url = Objects.requireNonNull(url);
+        this.altText = Objects.requireNonNull(altText, "altText must be not null");
+        this.url = Objects.requireNonNull(url, "image url must be not null");
         this.title = title;
     }
 

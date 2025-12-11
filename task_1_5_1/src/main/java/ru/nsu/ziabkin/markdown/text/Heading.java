@@ -1,11 +1,13 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.text;
+
+import ru.nsu.ziabkin.markdown.Element;
 
 import java.util.Objects;
 
 /*
  * Represents Heading element
  */
-final class Heading implements Element {
+public final class Heading implements Element {
     private final int level;
     private final Element content;
 
@@ -14,7 +16,7 @@ final class Heading implements Element {
             throw new IllegalArgumentException("Heading level must be between 1 and 6");
         }
         this.level = level;
-        this.content = Objects.requireNonNull(content);
+        this.content = Objects.requireNonNull(content,  "content must not be null");
     }
 
     /*

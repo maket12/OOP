@@ -1,16 +1,19 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.lists;
+
+import ru.nsu.ziabkin.markdown.Element;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /*
- * Represents UnorderedList element
+ * Represents OrderedList element
  */
-final class UnorderedList implements Element {
+public final class OrderedList implements Element {
     private final List<Element> items;
 
-    private UnorderedList(List<Element> items) {
+    public OrderedList(List<Element> items) {
         this.items = List.copyOf(items);
     }
 
@@ -22,15 +25,18 @@ final class UnorderedList implements Element {
         }
 
         public Builder addItem(Element element) {
-            items.add(Objects.requireNonNull(element));
+            items.add(Objects.requireNonNull(element, "list item must be not null"));
             return this;
         }
 
-        public UnorderedList build() {
-            return new UnorderedList(items);
+        public OrderedList build() {
+            return new OrderedList(items);
         }
     }
 
+    /*
+     * converts method into markdown
+     */
     @Override
     public String toMarkdown() {
         StringBuilder sb = new StringBuilder();
@@ -38,7 +44,9 @@ final class UnorderedList implements Element {
             if (i > 0) {
                 sb.append('\n');
             }
-            sb.append("- ").append(items.get(i).toMarkdown());
+            sb.append(i + 1)
+                    .append(". ")
+                    .append(items.get(i).toMarkdown());
         }
         return sb.toString();
     }
@@ -54,11 +62,11 @@ final class UnorderedList implements Element {
             return true;
         }
 
-        if (!(o instanceof UnorderedList)) {
+        if (!(o instanceof OrderedList)) {
             return false;
         }
 
-        UnorderedList that = (UnorderedList) o;
+        OrderedList that = (OrderedList) o;
 
         return Objects.equals(items, that.items);
     }

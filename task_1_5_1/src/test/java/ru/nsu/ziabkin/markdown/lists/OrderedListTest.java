@@ -1,41 +1,42 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.lists;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 /**
- * Tests for UnorderedList.
+ * Tests for OrderedList.
  */
-public class UnorderedListTest {
+public class OrderedListTest {
     @Test
-    void unorderedListRenders() {
-        UnorderedList list = new UnorderedList.Builder()
+    void orderedListRenders() {
+        OrderedList list = new OrderedList.Builder()
                 .addItem("First")
                 .addItem("Second")
-                .addItem(new Text.Bold("Third"))
+                .addItem(new Text.Italic("Third"))
                 .build();
 
         String expected = String.join("\n",
-                "- First",
-                "- Second",
-                "- **Third**"
+                "1. First",
+                "2. Second",
+                "3. *Third*"
         );
 
         Assertions.assertEquals(expected, list.toString());
     }
 
     @Test
-    void unorderedListRendersEachItemOnNewLine() {
-        UnorderedList list = new UnorderedList.Builder()
+    void orderedListRendersNumbersSequentially() {
+        OrderedList list = new OrderedList.Builder()
                 .addItem("First")
                 .addItem("Second")
-                .addItem(new Text.Bold("Third"))
+                .addItem(new Text.Italic("Third"))
                 .build();
 
         String expected = String.join("\n",
-                "- First",
-                "- Second",
-                "- **Third**"
+                "1. First",
+                "2. Second",
+                "3. *Third*"
         );
 
         Assertions.assertEquals(expected, list.toMarkdown());
@@ -43,12 +44,12 @@ public class UnorderedListTest {
 
     @Test
     void equalsAndHashCodeForSameItems() {
-        UnorderedList list1 = new UnorderedList.Builder()
+        OrderedList list1 = new OrderedList.Builder()
                 .addItem("A")
                 .addItem("B")
                 .build();
 
-        UnorderedList list2 = new UnorderedList.Builder()
+        OrderedList list2 = new OrderedList.Builder()
                 .addItem("A")
                 .addItem("B")
                 .build();
@@ -59,11 +60,11 @@ public class UnorderedListTest {
 
     @Test
     void notEqualsForDifferentItems() {
-        UnorderedList list1 = new UnorderedList.Builder()
+        OrderedList list1 = new OrderedList.Builder()
                 .addItem("A")
                 .build();
 
-        UnorderedList list2 = new UnorderedList.Builder()
+        OrderedList list2 = new OrderedList.Builder()
                 .addItem("A")
                 .addItem("B")
                 .build();
@@ -71,3 +72,4 @@ public class UnorderedListTest {
         Assertions.assertNotEquals(list1, list2);
     }
 }
+

@@ -1,33 +1,36 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.lists;
+
+import ru.nsu.ziabkin.markdown.Element;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /*
- * Represents OrderedList element
+ * Represents TaskList element
  */
-final class OrderedList implements Element {
-    private final List<Element> items;
+public final class TaskList implements Element {
+    private final List<TaskItem> items;
 
-    private OrderedList(List<Element> items) {
+    public TaskList(List<TaskItem> items) {
         this.items = List.copyOf(items);
     }
 
     public static class Builder {
-        private final List<Element> items = new ArrayList<>();
+        private final List<TaskItem> items = new ArrayList<>();
 
-        public Builder addItem(String text) {
-            return addItem(new Text.Plain(text));
-        }
-
-        public Builder addItem(Element element) {
-            items.add(Objects.requireNonNull(element));
+        public Builder addTask(String text, boolean done) {
+            items.add(new TaskItem(text, done));
             return this;
         }
 
-        public OrderedList build() {
-            return new OrderedList(items);
+        public Builder addTask(Element text, boolean done) {
+            items.add(new TaskItem(text, done));
+            return this;
+        }
+
+        public TaskList build() {
+            return new TaskList(items);
         }
     }
 
@@ -41,9 +44,7 @@ final class OrderedList implements Element {
             if (i > 0) {
                 sb.append('\n');
             }
-            sb.append(i + 1)
-                    .append(". ")
-                    .append(items.get(i).toMarkdown());
+            sb.append(items.get(i).toMarkdown());
         }
         return sb.toString();
     }
@@ -59,13 +60,13 @@ final class OrderedList implements Element {
             return true;
         }
 
-        if (!(o instanceof OrderedList)) {
+        if (!(o instanceof TaskList)) {
             return false;
         }
 
-        OrderedList that = (OrderedList) o;
+        TaskList taskList = (TaskList) o;
 
-        return Objects.equals(items, that.items);
+        return Objects.equals(items, taskList.items);
     }
 
     @Override

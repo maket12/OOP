@@ -1,14 +1,17 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.structs;
+
+import ru.nsu.ziabkin.markdown.Element;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 // Represents BlockQuote element
-final class BlockQuote implements Element {
+public final class BlockQuote implements Element {
     private final List<Element> lines;
 
-    private BlockQuote(List<Element> lines) {
+    public BlockQuote(List<Element> lines) {
         this.lines = List.copyOf(lines);
     }
 
@@ -20,7 +23,7 @@ final class BlockQuote implements Element {
         }
 
         public Builder addLine(Element element) {
-            lines.add(Objects.requireNonNull(element));
+            lines.add(Objects.requireNonNull(element, "element must not be null"));
             return this;
         }
 

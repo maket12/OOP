@@ -1,17 +1,19 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.structs;
+
+import ru.nsu.ziabkin.markdown.Element;
 
 import java.util.Objects;
 
 /*
  * Represents CodeBlock element
  */
-final class CodeBlock implements Element {
+public final class CodeBlock implements Element {
     private final String language; // может быть null/пустой
     private final String code;
 
-    private CodeBlock(String language, String code) {
+    public CodeBlock(String language, String code) {
         this.language = language;
-        this.code = Objects.requireNonNull(code);
+        this.code = Objects.requireNonNull(code, "code must be not null");
     }
 
     public static class Builder {

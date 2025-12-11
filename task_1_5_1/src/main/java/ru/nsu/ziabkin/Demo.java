@@ -1,8 +1,8 @@
 package ru.nsu.ziabkin;
 
 
-import ru.nsu.ziabkin.markdown.Table;
-import ru.nsu.ziabkin.markdown.Text;
+import ru.nsu.ziabkin.markdown.structs.Table;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 /**
  * Demonstration of the program.

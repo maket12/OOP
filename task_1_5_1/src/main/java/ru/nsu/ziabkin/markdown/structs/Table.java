@@ -1,4 +1,7 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.structs;
+
+import ru.nsu.ziabkin.markdown.Element;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +21,7 @@ public final class Table implements Element {
     /**
      * Represents Table element.
      */
-    Table(List<Integer> alignments, List<List<Element>> rows) {
+    public Table(List<Integer> alignments, List<List<Element>> rows) {
         this.alignments = List.copyOf(alignments);
         this.rows = rows.stream()
                 .map(List::copyOf)

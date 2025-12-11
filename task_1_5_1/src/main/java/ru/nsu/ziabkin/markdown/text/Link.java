@@ -1,11 +1,13 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.text;
+
+import ru.nsu.ziabkin.markdown.Element;
 
 import java.util.Objects;
 
 /*
  * Represents Link element
  */
-final class Link implements Element {
+public final class Link implements Element {
     private final Element text;
     private final String url;
     private final String title;
@@ -15,8 +17,8 @@ final class Link implements Element {
     }
 
     public Link(Element text, String url, String title) {
-        this.text = Objects.requireNonNull(text);
-        this.url = Objects.requireNonNull(url);
+        this.text = Objects.requireNonNull(text, "link text must be not null");
+        this.url = Objects.requireNonNull(url, "link url must be not null");
         this.title = title;
     }
 

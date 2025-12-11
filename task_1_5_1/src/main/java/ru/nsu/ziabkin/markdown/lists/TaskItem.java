@@ -1,11 +1,14 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.lists;
+
+import ru.nsu.ziabkin.markdown.Element;
+import ru.nsu.ziabkin.markdown.text.Text;
 
 import java.util.Objects;
 
 /*
  * Represents TaskItem element
  */
-final class TaskItem implements Element {
+public final class TaskItem implements Element {
     private final Element text;
     private final boolean done;
 
@@ -14,7 +17,7 @@ final class TaskItem implements Element {
     }
 
     public TaskItem(Element text, boolean done) {
-        this.text = Objects.requireNonNull(text);
+        this.text = Objects.requireNonNull(text, "task item text must be not null");
         this.done = done;
     }
 

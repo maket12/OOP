@@ -1,4 +1,6 @@
-package ru.nsu.ziabkin.markdown;
+package ru.nsu.ziabkin.markdown.text;
+
+import ru.nsu.ziabkin.markdown.Element;
 
 import java.util.Objects;
 
@@ -13,8 +15,8 @@ public abstract class Text implements Element {
      *
      * @param value the text value, cannot be null
      */
-    protected Text(String value) {
-        this.value = Objects.requireNonNull(value);
+    public Text(String value) {
+        this.value = Objects.requireNonNull(value, "text value must not be null");
     }
 
     /**
