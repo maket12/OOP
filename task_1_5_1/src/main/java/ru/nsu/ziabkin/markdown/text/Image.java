@@ -1,8 +1,7 @@
 package ru.nsu.ziabkin.markdown.text;
 
-import ru.nsu.ziabkin.markdown.Element;
-
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.Element;
 
 /*
  * Represents Image element
@@ -12,6 +11,9 @@ public final class Image implements Element {
     private final String url;
     private final String title;
 
+    /*
+     * Image
+     */
     public Image(String altText, String url) {
         this(altText, url, null);
     }

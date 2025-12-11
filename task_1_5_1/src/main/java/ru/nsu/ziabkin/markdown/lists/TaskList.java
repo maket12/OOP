@@ -1,10 +1,9 @@
 package ru.nsu.ziabkin.markdown.lists;
 
-import ru.nsu.ziabkin.markdown.Element;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.Element;
 
 /*
  * Represents TaskList element
@@ -12,6 +11,9 @@ import java.util.Objects;
 public final class TaskList implements Element {
     private final List<TaskItem> items;
 
+    /*
+     * Task list
+     */
     public TaskList(List<TaskItem> items) {
         this.items = List.copyOf(items);
     }

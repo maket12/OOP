@@ -1,9 +1,9 @@
 package ru.nsu.ziabkin.markdown.lists;
 
-import ru.nsu.ziabkin.markdown.Element;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.Element;
 import ru.nsu.ziabkin.markdown.text.Text;
 
 /*

@@ -1,8 +1,7 @@
 package ru.nsu.ziabkin.markdown.text;
 
-import ru.nsu.ziabkin.markdown.Element;
-
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.Element;
 
 /*
  * Represents Heading element
@@ -11,6 +10,9 @@ public final class Heading implements Element {
     private final int level;
     private final Element content;
 
+    /*
+     * Heading
+     */
     public Heading(int level, Element content) {
         if (level < 1 || level > 6) {
             throw new IllegalArgumentException("Heading level must be between 1 and 6");

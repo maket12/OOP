@@ -1,8 +1,7 @@
 package ru.nsu.ziabkin.markdown.text;
 
-import ru.nsu.ziabkin.markdown.Element;
-
 import java.util.Objects;
+import ru.nsu.ziabkin.markdown.Element;
 
 /**
  * Represents Text element.
