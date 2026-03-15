@@ -29,7 +29,7 @@ public class ThreadPrimeChecker {
                         return;
                     }
 
-                    if (PrimeUtils.isPrime(arr[j])) {
+                    if (!PrimeUtils.isPrime(arr[j])) {
                         found = true;
                         interruptAll(threads);
                         return;
