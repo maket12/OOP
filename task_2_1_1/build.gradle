@@ -1,13 +1,30 @@
 plugins {
     id 'java'
+    id 'jacoco'
+    id 'application'
 }
 
-group = 'org.example'
+application {
+    mainClass = 'ru.nsu.ziabkin.Main'
+}
+
+run {
+    standardInput = System.in
+}
+
+group = 'ru.nsu.ziabkin'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
@@ -17,4 +34,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
 }
