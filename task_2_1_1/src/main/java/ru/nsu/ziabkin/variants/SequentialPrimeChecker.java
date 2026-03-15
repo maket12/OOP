@@ -1,6 +1,6 @@
-package ru.nsu.ziabkin;
+package ru.nsu.ziabkin.variants;
 
-import ru.nsu.ziabkin.utils.PrimeUtils;
+import ru.nsu.ziabkin.PrimeUtils;
 
 public class SequentialPrimeChecker {
     public static boolean hasNonPrime(int[] arr) {

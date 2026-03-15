@@ -1,32 +1,40 @@
 package ru.nsu.ziabkin;
 
+import ru.nsu.ziabkin.variants.SequentialPrimeChecker;
+import ru.nsu.ziabkin.variants.StreamPrimeChecker;
+import ru.nsu.ziabkin.variants.ThreadPrimeChecker;
+
 import java.util.Arrays;
 
+/**
+ * Demonstration of program
+ */
 public class Main {
+    /**
+     * Demonstration method which launch 3 variants of searching for prime numbers.
+     * For each variant it prints amount of time(ms) of execution and result of the search
+     */
     public static void main(String[] args) throws InterruptedException {
-        // Подготовка данных: 10 млн больших простых чисел
         int size = 10_000_000;
         int[] data = new int[size];
-        Arrays.fill(data, 2147483647); // Максимальное простое число int
+        Arrays.fill(data, 2147483647);
+        data[10] = 24;
 
         System.out.println("--- Begin to analyze ---");
 
-        // 1. Последовательно
         long start = System.currentTimeMillis();
-        SequentialPrimeChecker.hasNonPrime(data);
-        System.out.println("Sequentially: " + (System.currentTimeMillis() - start) + " ms");
+        boolean res = SequentialPrimeChecker.hasNonPrime(data);
+        System.out.println("Sequentially: " + (System.currentTimeMillis() - start) + " ms" + " | " + res);
 
-        // 2. Thread (от 2 до 8 потоков)
         int[] threadsToTest = {2, 4, 8};
         for (int t : threadsToTest) {
             start = System.currentTimeMillis();
-            ThreadPrimeChecker.hasNonPrime(data, t);
-            System.out.println("Threads (" + t + "): " + (System.currentTimeMillis() - start) + " ms");
+            res = ThreadPrimeChecker.hasNonPrime(data, t);
+            System.out.println("Threads (" + t + "): " + (System.currentTimeMillis() - start) + " ms" + " | " + res);
         }
 
-        // 3. Parallel Stream
         start = System.currentTimeMillis();
-        StreamPrimeChecker.hasNonPrime(data);
-        System.out.println("Parallel Stream: " + (System.currentTimeMillis() - start) + " ms");
+        res = StreamPrimeChecker.hasNonPrime(data);
+        System.out.println("Parallel Stream: " + (System.currentTimeMillis() - start) + " ms" + " | " + res);
     }
 }
