@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.ziabkin","l":"Main"},{"p":"ru.nsu.ziabkin","l":"PrimeUtils"},{"p":"ru.nsu.ziabkin.variants","l":"SequentialPrimeChecker"},{"p":"ru.nsu.ziabkin.variants","l":"StreamPrimeChecker"},{"p":"ru.nsu.ziabkin.variants","l":"ThreadPrimeChecker"}];updateSearchResults();
