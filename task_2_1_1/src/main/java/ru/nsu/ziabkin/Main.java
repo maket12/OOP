@@ -17,7 +17,6 @@ public class Main {
         int size = 10_000_000;
         int[] data = new int[size];
         Arrays.fill(data, 2147483647);
-        data[10] = 24;
 
         System.out.println("--- Begin to analyze ---");
 
