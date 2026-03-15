@@ -7,8 +7,10 @@ import ru.nsu.ziabkin.variants.SequentialPrimeChecker;
 import ru.nsu.ziabkin.variants.StreamPrimeChecker;
 import ru.nsu.ziabkin.variants.ThreadPrimeChecker;
 
+/**
+ * Integration test of main class.
+ */
 public class MainTest {
-
     @Test
     public void testMainMethodExecution() {
         Assertions.assertDoesNotThrow(() -> Main.main(new String[]{}));

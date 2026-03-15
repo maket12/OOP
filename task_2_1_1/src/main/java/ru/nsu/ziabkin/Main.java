@@ -23,20 +23,20 @@ public class Main {
 
         long start = System.currentTimeMillis();
         boolean res = SequentialPrimeChecker.hasNonPrime(data);
-        System.out.println("Sequentially: " + (System.currentTimeMillis() - start) +
-                " ms" + " | " + res);
+        System.out.println("Sequentially: " + (System.currentTimeMillis() - start)
+                + " ms" + " | " + res);
 
         int[] threadsToTest = {2, 4, 8};
         for (int t : threadsToTest) {
             start = System.currentTimeMillis();
             res = ThreadPrimeChecker.hasNonPrime(data, t);
-            System.out.println("Threads (" + t + "): " + (System.currentTimeMillis() - start) +
-                    " ms" + " | " + res);
+            System.out.println("Threads (" + t + "): " + (System.currentTimeMillis() - start)
+                    + " ms" + " | " + res);
         }
 
         start = System.currentTimeMillis();
         res = StreamPrimeChecker.hasNonPrime(data);
-        System.out.println("Parallel Stream: " + (System.currentTimeMillis() - start) +
-                " ms" + " | " + res);
+        System.out.println("Parallel Stream: " + (System.currentTimeMillis() - start)
+                + " ms" + " | " + res);
     }
 }
