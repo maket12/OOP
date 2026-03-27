@@ -1,10 +1,10 @@
 package ru.nsu.ziabkin;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  Integration test of the main class.
@@ -18,8 +18,8 @@ class MainTest {
         if (!configFile.exists()) {
             try {
                 FileWriter writer = new FileWriter(configFile);
-                writer.write("{\"warehouseCapacity\": 5, \"bakerSpeeds\": [100], " +
-                        "\"couriers\": [{\"trunkSize\": 2, \"speedMs\": 100}]}");
+                writer.write("{\"warehouseCapacity\": 5, \"bakerSpeeds\": [100], "
+                        + "\"couriers\": [{\"trunkSize\": 2, \"speedMs\": 100}]}");
                 writer.close();
                 createdManually = true;
             } catch (IOException e) {

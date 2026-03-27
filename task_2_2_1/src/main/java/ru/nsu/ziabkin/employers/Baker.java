@@ -13,6 +13,9 @@ public class Baker implements Runnable {
     private final OrderQueue queue;
     private final Warehouse warehouse;
 
+    /**
+     * Initializes a baker
+     */
     public Baker(int speedMs, OrderQueue queue, Warehouse warehouse) {
         this.speedMs = speedMs;
         this.queue = queue;

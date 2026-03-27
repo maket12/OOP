@@ -1,12 +1,12 @@
 package ru.nsu.ziabkin.employers;
 
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.ziabkin.models.Order;
 import ru.nsu.ziabkin.models.OrderState;
 import ru.nsu.ziabkin.queues.Warehouse;
-import java.util.List;
 
 class CourierTest {
     private Warehouse warehouse;

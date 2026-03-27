@@ -1,9 +1,8 @@
 package ru.nsu.ziabkin.queues;
 
-import ru.nsu.ziabkin.models.Order;
-
 import java.util.LinkedList;
 import java.util.Queue;
+import ru.nsu.ziabkin.models.Order;
 
 /**
  * Class represents a queue of orders.

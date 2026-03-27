@@ -8,6 +8,9 @@ public class PizzeriaConfig {
     public PizzeriaConfig.CourierConfig[] couriers;
     public int warehouseCapacity;
 
+    /**
+     * Initializes a courier config
+     */
     public static class CourierConfig {
         public int trunkSize;
         public int speedMs;

@@ -1,12 +1,11 @@
 package ru.nsu.ziabkin.queues;
 
-import ru.nsu.ziabkin.models.Order;
-import ru.nsu.ziabkin.models.OrderState;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import ru.nsu.ziabkin.models.Order;
+import ru.nsu.ziabkin.models.OrderState;
 
 /**
  * Class represents a warehouse.
@@ -16,6 +15,9 @@ public class Warehouse {
     private final int capacity;
     private boolean isOpen = true;
 
+    /**
+     * Initializes a warehouse
+     */
     public Warehouse(int capacity) {
         this.capacity = capacity;
     }

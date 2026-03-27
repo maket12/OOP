@@ -1,5 +1,9 @@
 package ru.nsu.ziabkin;
 
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.Gson;
 import ru.nsu.ziabkin.employers.Baker;
 import ru.nsu.ziabkin.employers.Courier;
 import ru.nsu.ziabkin.models.Order;
@@ -7,16 +11,13 @@ import ru.nsu.ziabkin.queues.OrderQueue;
 import ru.nsu.ziabkin.queues.Warehouse;
 import ru.nsu.ziabkin.utils.PizzeriaConfig;
 
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.gson.Gson;
-
 /**
- * Main class
+ * Main class.
  */
 public class Main {
+    /**
+     * Main method
+     */
     public static void main(String[] args) throws Exception {
         Gson gson = new Gson();
         PizzeriaConfig config = gson.fromJson(new FileReader("config.json"), PizzeriaConfig.class);

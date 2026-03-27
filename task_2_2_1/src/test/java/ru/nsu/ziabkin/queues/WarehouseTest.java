@@ -1,9 +1,9 @@
 package ru.nsu.ziabkin.queues;
 
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.ziabkin.models.Order;
-import java.util.List;
 
 class WarehouseTest {
     @Test
@@ -22,7 +22,9 @@ class WarehouseTest {
         Warehouse warehouse = new Warehouse(5);
 
         Thread t = new Thread(() -> {
-            try { warehouse.take(1); } catch (InterruptedException ignored) {}
+            try {
+                warehouse.take(1);
+            } catch (InterruptedException ignored) {}
         });
 
         t.start();

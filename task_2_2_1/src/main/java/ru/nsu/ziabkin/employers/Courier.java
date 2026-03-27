@@ -1,10 +1,9 @@
 package ru.nsu.ziabkin.employers;
 
+import java.util.List;
 import ru.nsu.ziabkin.models.Order;
 import ru.nsu.ziabkin.models.OrderState;
 import ru.nsu.ziabkin.queues.Warehouse;
-
-import java.util.List;
 
 /**
  * Class represents a courier entity.
@@ -14,6 +13,9 @@ public class Courier implements Runnable {
     private final int deliveryTimeMs;
     private final Warehouse warehouse;
 
+    /**
+     * Initializes a courier
+     */
     public Courier(int trunkCapacity, int deliveryTimeMs, Warehouse warehouse) {
         this.trunkCapacity = trunkCapacity;
         this.deliveryTimeMs = deliveryTimeMs;
