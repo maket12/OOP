@@ -17,6 +17,7 @@ public class Warehouse {
 
     /**
      * Initializes a warehouse
+     *
      */
     public Warehouse(int capacity) {
         this.capacity = capacity;

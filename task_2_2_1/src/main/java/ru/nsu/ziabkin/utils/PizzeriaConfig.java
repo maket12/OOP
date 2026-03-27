@@ -10,6 +10,7 @@ public class PizzeriaConfig {
 
     /**
      * Initializes a courier config
+     *
      */
     public static class CourierConfig {
         public int trunkSize;

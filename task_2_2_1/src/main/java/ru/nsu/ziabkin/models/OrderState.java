@@ -12,6 +12,7 @@ public enum OrderState {
     DELIVERED("Delivered"),;
 
     private final String description;
+
     OrderState(String description) {
         this.description = description;
     }

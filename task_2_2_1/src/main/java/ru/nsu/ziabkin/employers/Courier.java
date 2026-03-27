@@ -15,6 +15,7 @@ public class Courier implements Runnable {
 
     /**
      * Initializes a courier
+     *
      */
     public Courier(int trunkCapacity, int deliveryTimeMs, Warehouse warehouse) {
         this.trunkCapacity = trunkCapacity;
