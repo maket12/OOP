@@ -1,9 +1,9 @@
 package ru.nsu.ziabkin;
 
+import com.google.gson.Gson;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.gson.Gson;
 import ru.nsu.ziabkin.employers.Baker;
 import ru.nsu.ziabkin.employers.Courier;
 import ru.nsu.ziabkin.models.Order;
@@ -16,7 +16,7 @@ import ru.nsu.ziabkin.utils.PizzeriaConfig;
  */
 public class Main {
     /**
-     * Main method
+     * Main method.
      *
      */
     public static void main(String[] args) throws Exception {

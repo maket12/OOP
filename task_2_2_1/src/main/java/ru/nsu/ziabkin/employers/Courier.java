@@ -14,7 +14,7 @@ public class Courier implements Runnable {
     private final Warehouse warehouse;
 
     /**
-     * Initializes a courier
+     * Initializes a courier.
      *
      */
     public Courier(int trunkCapacity, int deliveryTimeMs, Warehouse warehouse) {

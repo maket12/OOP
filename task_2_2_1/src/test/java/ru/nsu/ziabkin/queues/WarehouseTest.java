@@ -24,7 +24,9 @@ class WarehouseTest {
         Thread t = new Thread(() -> {
             try {
                 warehouse.take(1);
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+                // Nothing here
+            }
         });
 
         t.start();

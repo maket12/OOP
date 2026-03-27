@@ -14,7 +14,7 @@ public class Baker implements Runnable {
     private final Warehouse warehouse;
 
     /**
-     * Initializes a baker
+     * Initializes a baker.
      *
      */
     public Baker(int speedMs, OrderQueue queue, Warehouse warehouse) {

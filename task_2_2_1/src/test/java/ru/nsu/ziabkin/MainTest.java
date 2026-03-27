@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- Integration test of the main class.
+ * Integration test of the main class.
  */
 class MainTest {
     @Test

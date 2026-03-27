@@ -16,13 +16,20 @@ public class Warehouse {
     private boolean isOpen = true;
 
     /**
-     * Initializes a warehouse
+     * Initializes a warehouse.
      *
+     * @param capacity the maximum number of pizzas the warehouse can store.
      */
     public Warehouse(int capacity) {
         this.capacity = capacity;
     }
 
+    /**
+     * Puts an order into the warehouse, blocking if it is full.
+     *
+     * @param order the order to store.
+     * @throws InterruptedException if the thread is interrupted while waiting.
+     */
     public synchronized void put(Order order) throws InterruptedException {
         while (pizzas.size() >= capacity && isOpen) {
             wait();
@@ -35,6 +42,13 @@ public class Warehouse {
         notifyAll();
     }
 
+    /**
+     * Takes multiple orders from the warehouse up to the specified capacity.
+     *
+     * @param maxCapacity the maximum number of orders to take.
+     * @return a list of orders, or null if the warehouse is closed and empty.
+     * @throws InterruptedException if the thread is interrupted while waiting.
+     */
     public synchronized List<Order> take(int maxCapacity) throws InterruptedException {
         while (pizzas.isEmpty() && isOpen) {
             wait();
@@ -52,6 +66,9 @@ public class Warehouse {
         return taken;
     }
 
+    /**
+     * Closes the warehouse and notifies all waiting threads.
+     */
     public synchronized void close() {
         isOpen = false;
         notifyAll();
