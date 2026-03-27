@@ -1,0 +1,18 @@
+{
+  "bakerSpeeds": [
+    1000,
+    2000,
+    1500
+  ],
+  "couriers": [
+    {
+      "trunkSize": 2,
+      "speedMs": 3000
+    },
+    {
+      "trunkSize": 1,
+      "speedMs": 2000
+    }
+  ],
+  "warehouseCapacity": 5
+}
