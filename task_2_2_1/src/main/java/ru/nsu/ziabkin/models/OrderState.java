@@ -1,5 +1,8 @@
 package ru.nsu.ziabkin.models;
 
+/**
+ * Enum represents order states.
+ */
 public enum OrderState {
     PENDING("In Queue"),
     COOKING("Cooking"),

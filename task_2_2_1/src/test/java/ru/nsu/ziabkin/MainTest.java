@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ Integration test of the main class.
+ */
 class MainTest {
     @Test
     void testMainExecutionWithConfig() {

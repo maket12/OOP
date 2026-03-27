@@ -13,6 +13,9 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+/**
+ * Main class
+ */
 public class Main {
     public static void main(String[] args) throws Exception {
         Gson gson = new Gson();

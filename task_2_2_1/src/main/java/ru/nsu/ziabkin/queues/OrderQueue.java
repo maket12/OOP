@@ -5,6 +5,9 @@ import ru.nsu.ziabkin.models.Order;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Class represents a queue of orders.
+ */
 public class OrderQueue {
     private final Queue<Order> queue = new LinkedList<>();
     private boolean isOpen = true;

@@ -6,6 +6,9 @@ import ru.nsu.ziabkin.queues.Warehouse;
 
 import java.util.List;
 
+/**
+ * Class represents a courier entity.
+ */
 public class Courier implements Runnable {
     private final int trunkCapacity;
     private final int deliveryTimeMs;

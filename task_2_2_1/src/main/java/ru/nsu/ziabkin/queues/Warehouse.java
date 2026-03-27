@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * Class represents a warehouse.
+ */
 public class Warehouse {
     private final Queue<Order> pizzas = new LinkedList<>();
     private final int capacity;

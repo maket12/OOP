@@ -5,6 +5,9 @@ import ru.nsu.ziabkin.models.OrderState;
 import ru.nsu.ziabkin.queues.OrderQueue;
 import ru.nsu.ziabkin.queues.Warehouse;
 
+/**
+ * Class represents a baker entity.
+ */
 public class Baker implements Runnable {
     private final int speedMs;
     private final OrderQueue queue;

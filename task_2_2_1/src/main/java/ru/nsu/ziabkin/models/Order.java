@@ -2,6 +2,9 @@ package ru.nsu.ziabkin.models;
 
 import ru.nsu.ziabkin.utils.Logger;
 
+/**
+ * Class represents an order entity.
+ */
 public class Order {
     private final int id;
     private OrderState state;
