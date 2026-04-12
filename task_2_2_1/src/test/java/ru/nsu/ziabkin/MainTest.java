@@ -10,17 +10,16 @@ import org.junit.jupiter.api.Test;
  * Integration test of the main class.
  */
 class MainTest {
+
     @Test
     void testMainExecutionWithConfig() {
         File configFile = new File("config.json");
         boolean createdManually = false;
 
         if (!configFile.exists()) {
-            try {
-                FileWriter writer = new FileWriter(configFile);
+            try (FileWriter writer = new FileWriter(configFile)) {
                 writer.write("{\"warehouseCapacity\": 5, \"bakerSpeeds\": [100], "
                         + "\"couriers\": [{\"trunkSize\": 2, \"speedMs\": 100}]}");
-                writer.close();
                 createdManually = true;
             } catch (IOException e) {
                 Assertions.fail("Failed to create temporary config.json for test");
@@ -28,9 +27,8 @@ class MainTest {
         }
 
         Assertions.assertDoesNotThrow(() -> {
-            String[] args = {};
-            Main.main(args);
-        }, "Main method should execute without exceptions");
+            Main.main(new String[]{});
+        }, "Main method should execute without exceptions when config is present");
 
         if (createdManually) {
             configFile.delete();
@@ -38,7 +36,7 @@ class MainTest {
     }
 
     @Test
-    void testMainThrowsExceptionWhenConfigMissing() {
+    void testMainDoesNotCrashWhenConfigMissing() {
         File configFile = new File("config.json");
         File tempFile = new File("config_backup.json");
 
@@ -47,10 +45,9 @@ class MainTest {
             moved = configFile.renameTo(tempFile);
         }
 
-        Assertions.assertThrows(Exception.class, () -> {
-            String[] args = {};
-            Main.main(args);
-        }, "Main should throw an exception if config.json is missing");
+        Assertions.assertDoesNotThrow(() -> {
+            Main.main(new String[]{});
+        }, "Main should handle missing config.json gracefully without throwing exceptions");
 
         if (moved) {
             tempFile.renameTo(configFile);
