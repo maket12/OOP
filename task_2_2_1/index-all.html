@@ -54,7 +54,7 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/ziabkin/queues/OrderQueue.html#addOrder(ru.nsu.ziabkin.models.Order)" class="member-name-link">addOrder(Order)</a> - Method in class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/OrderQueue.html" title="class in ru.nsu.ziabkin.queues">OrderQueue</a></dt>
 <dd>
-<div class="block">Adds an order to the queue and notifies waiting threads.</div>
+<div class="block">Adds an order to the queue.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
@@ -74,11 +74,11 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/ziabkin/queues/OrderQueue.html#close()" class="member-name-link">close()</a> - Method in class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/OrderQueue.html" title="class in ru.nsu.ziabkin.queues">OrderQueue</a></dt>
 <dd>
-<div class="block">Closes the queue for new orders and notifies all waiting threads.</div>
+<div class="block">Closes the queue and notifies all waiting threads.</div>
 </dd>
 <dt><a href="ru/nsu/ziabkin/queues/Warehouse.html#close()" class="member-name-link">close()</a> - Method in class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/Warehouse.html" title="class in ru.nsu.ziabkin.queues">Warehouse</a></dt>
 <dd>
-<div class="block">Closes the warehouse and notifies all waiting threads.</div>
+<div class="block">Closes the warehouse.</div>
 </dd>
 <dt><a href="ru/nsu/ziabkin/models/OrderState.html#COOKING" class="member-name-link">COOKING</a> - Enum constant in enum class ru.nsu.ziabkin.models.<a href="ru/nsu/ziabkin/models/OrderState.html" title="enum class in ru.nsu.ziabkin.models">OrderState</a></dt>
 <dd>&nbsp;</dd>
@@ -151,10 +151,16 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/ziabkin/queues/OrderQueue.html" class="type-name-link" title="class in ru.nsu.ziabkin.queues">OrderQueue</a> - Class in <a href="ru/nsu/ziabkin/queues/package-summary.html">ru.nsu.ziabkin.queues</a></dt>
 <dd>
-<div class="block">Class represents a queue of orders.</div>
+<div class="block">Universal order queue with support for capacity limiting.</div>
 </dd>
 <dt><a href="ru/nsu/ziabkin/queues/OrderQueue.html#%3Cinit%3E()" class="member-name-link">OrderQueue()</a> - Constructor for class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/OrderQueue.html" title="class in ru.nsu.ziabkin.queues">OrderQueue</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates an unlimited queue.</div>
+</dd>
+<dt><a href="ru/nsu/ziabkin/queues/OrderQueue.html#%3Cinit%3E(int)" class="member-name-link">OrderQueue(int)</a> - Constructor for class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/OrderQueue.html" title="class in ru.nsu.ziabkin.queues">OrderQueue</a></dt>
+<dd>
+<div class="block">Creates a queue with a specific capacity limit.</div>
+</dd>
 <dt><a href="ru/nsu/ziabkin/models/OrderState.html" class="type-name-link" title="enum class in ru.nsu.ziabkin.models">OrderState</a> - Enum Class in <a href="ru/nsu/ziabkin/models/package-summary.html">ru.nsu.ziabkin.models</a></dt>
 <dd>
 <div class="block">Enum represents order states.</div>
@@ -176,7 +182,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/ziabkin/queues/Warehouse.html#put(ru.nsu.ziabkin.models.Order)" class="member-name-link">put(Order)</a> - Method in class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/Warehouse.html" title="class in ru.nsu.ziabkin.queues">Warehouse</a></dt>
 <dd>
-<div class="block">Puts an order into the warehouse, blocking if it is full.</div>
+<div class="block">Puts a finished order into the warehouse and updates its state.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
@@ -211,11 +217,15 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/ziabkin/queues/Warehouse.html#take(int)" class="member-name-link">take(int)</a> - Method in class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/Warehouse.html" title="class in ru.nsu.ziabkin.queues">Warehouse</a></dt>
 <dd>
-<div class="block">Takes multiple orders from the warehouse up to the specified capacity.</div>
+<div class="block">Takes orders from the warehouse for delivery.</div>
 </dd>
 <dt><a href="ru/nsu/ziabkin/queues/OrderQueue.html#takeOrder()" class="member-name-link">takeOrder()</a> - Method in class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/OrderQueue.html" title="class in ru.nsu.ziabkin.queues">OrderQueue</a></dt>
 <dd>
-<div class="block">Takes an order from the queue, blocking if the queue is empty.</div>
+<div class="block">Takes a single order from the queue.</div>
+</dd>
+<dt><a href="ru/nsu/ziabkin/queues/OrderQueue.html#takeOrders(int)" class="member-name-link">takeOrders(int)</a> - Method in class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/OrderQueue.html" title="class in ru.nsu.ziabkin.queues">OrderQueue</a></dt>
+<dd>
+<div class="block">Takes multiple orders at once.</div>
 </dd>
 <dt><a href="ru/nsu/ziabkin/utils/PizzeriaConfig.CourierConfig.html#trunkSize" class="member-name-link">trunkSize</a> - Variable in class ru.nsu.ziabkin.utils.<a href="ru/nsu/ziabkin/utils/PizzeriaConfig.CourierConfig.html" title="class in ru.nsu.ziabkin.utils">PizzeriaConfig.CourierConfig</a></dt>
 <dd>&nbsp;</dd>
@@ -238,11 +248,11 @@ the order they are declared.</div>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/ziabkin/queues/Warehouse.html" class="type-name-link" title="class in ru.nsu.ziabkin.queues">Warehouse</a> - Class in <a href="ru/nsu/ziabkin/queues/package-summary.html">ru.nsu.ziabkin.queues</a></dt>
 <dd>
-<div class="block">Class represents a warehouse.</div>
+<div class="block">Class represents a warehouse for ready products.</div>
 </dd>
 <dt><a href="ru/nsu/ziabkin/queues/Warehouse.html#%3Cinit%3E(int)" class="member-name-link">Warehouse(int)</a> - Constructor for class ru.nsu.ziabkin.queues.<a href="ru/nsu/ziabkin/queues/Warehouse.html" title="class in ru.nsu.ziabkin.queues">Warehouse</a></dt>
 <dd>
-<div class="block">Initializes a warehouse.</div>
+<div class="block">Initializes the warehouse with a given capacity.</div>
 </dd>
 <dt><a href="ru/nsu/ziabkin/utils/PizzeriaConfig.html#warehouseCapacity" class="member-name-link">warehouseCapacity</a> - Variable in class ru.nsu.ziabkin.utils.<a href="ru/nsu/ziabkin/utils/PizzeriaConfig.html" title="class in ru.nsu.ziabkin.utils">PizzeriaConfig</a></dt>
 <dd>&nbsp;</dd>

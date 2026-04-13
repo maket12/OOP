@@ -77,7 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Warehouse</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Class represents a warehouse.</div>
+<div class="block">Class represents a warehouse for ready products.
+ It uses an internal OrderQueue to manage storage and synchronization.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,7 +92,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int)" class="member-name-link">Warehouse</a><wbr>(int&nbsp;capacity)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Initializes a warehouse.</div>
+<div class="block">Initializes the warehouse with a given capacity.</div>
 </div>
 </div>
 </section>
@@ -110,17 +111,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#close()" class="member-name-link">close</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Closes the warehouse and notifies all waiting threads.</div>
+<div class="block">Closes the warehouse.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#put(ru.nsu.ziabkin.models.Order)" class="member-name-link">put</a><wbr>(<a href="../models/Order.html" title="class in ru.nsu.ziabkin.models">Order</a>&nbsp;order)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Puts an order into the warehouse, blocking if it is full.</div>
+<div class="block">Puts a finished order into the warehouse and updates its state.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../models/Order.html" title="class in ru.nsu.ziabkin.models">Order</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#take(int)" class="member-name-link">take</a><wbr>(int&nbsp;maxCapacity)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Takes multiple orders from the warehouse up to the specified capacity.</div>
+<div class="block">Takes orders from the warehouse for delivery.</div>
 </div>
 </div>
 </div>
@@ -143,10 +144,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(int)">
 <h3>Warehouse</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Warehouse</span><wbr><span class="parameters">(int&nbsp;capacity)</span></div>
-<div class="block">Initializes a warehouse.</div>
+<div class="block">Initializes the warehouse with a given capacity.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>capacity</code> - the maximum number of pizzas the warehouse can store.</dd>
+<dd><code>capacity</code> - the maximum number of pizzas the warehouse can hold.</dd>
 </dl>
 </section>
 </li>
@@ -163,12 +164,12 @@ loadScripts(document, 'script');</script>
 <h3>put</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">put</span><wbr><span class="parameters">(<a href="../models/Order.html" title="class in ru.nsu.ziabkin.models">Order</a>&nbsp;order)</span>
          throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
-<div class="block">Puts an order into the warehouse, blocking if it is full.</div>
+<div class="block">Puts a finished order into the warehouse and updates its state.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>order</code> - the order to store.</dd>
+<dd><code>order</code> - the order to be stored.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if the thread is interrupted while waiting.</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if the thread is interrupted while waiting for space.</dd>
 </dl>
 </section>
 </li>
@@ -177,14 +178,14 @@ loadScripts(document, 'script');</script>
 <h3>take</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../models/Order.html" title="class in ru.nsu.ziabkin.models">Order</a>&gt;</span>&nbsp;<span class="element-name">take</span><wbr><span class="parameters">(int&nbsp;maxCapacity)</span>
                  throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
-<div class="block">Takes multiple orders from the warehouse up to the specified capacity.</div>
+<div class="block">Takes orders from the warehouse for delivery.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>maxCapacity</code> - the maximum number of orders to take.</dd>
+<dd><code>maxCapacity</code> - the maximum number of orders the courier can carry.</dd>
 <dt>Returns:</dt>
-<dd>a list of orders, or null if the warehouse is closed and empty.</dd>
+<dd>a list of orders to be delivered.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if the thread is interrupted while waiting.</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if the thread is interrupted while waiting for orders.</dd>
 </dl>
 </section>
 </li>
@@ -192,7 +193,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="close()">
 <h3>close</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">close</span>()</div>
-<div class="block">Closes the warehouse and notifies all waiting threads.</div>
+<div class="block">Closes the warehouse.</div>
 </section>
 </li>
 </ul>
