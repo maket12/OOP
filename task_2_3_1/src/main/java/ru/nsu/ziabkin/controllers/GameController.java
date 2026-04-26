@@ -1,35 +1,29 @@
 package ru.nsu.ziabkin.controllers;
 
 import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import ru.nsu.ziabkin.models.Direction;
 import ru.nsu.ziabkin.models.GameModel;
 import ru.nsu.ziabkin.models.GameState;
 import ru.nsu.ziabkin.models.Point;
 import ru.nsu.ziabkin.models.Snake;
+import ru.nsu.ziabkin.views.GameView;
 
 /**
- * Controller class that manages the game UI, input, and sounds.
+ * The Controller manages input, sounds, and the game loop by linking the Model and View.
  */
-public class GameController implements Initializable {
-    private static final int CELL_SIZE = 20;
+public class GameController {
     private static final int WIDTH = 30;
     private static final int HEIGHT = 20;
+    private static final int WIN_LENGTH = 25;
 
     @FXML private Canvas canvas;
     @FXML private VBox menuPane;
@@ -38,30 +32,26 @@ public class GameController implements Initializable {
     @FXML private Label lastScoreLabel;
 
     private GameModel model;
+    private GameView view; // Добавляем ссылку на View
     private AnimationTimer timer;
     private long lastUpdate = 0;
 
     private AudioClip eatSound;
     private AudioClip gameOverSound;
-//    private MediaPlayer backgroundMusic;
     private final Preferences prefs = Preferences.userNodeForPackage(GameController.class);
 
-    private static final int WIN_LENGTH = 25;
+    @FXML
+    public void initialize() {
+        view = new GameView(canvas, scoreLabel, bestScoreLabel, lastScoreLabel, menuPane);
 
-    /**
-     * Initializes the controller, loads preferences and sounds.
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        bestScoreLabel.setText("Best: " + prefs.getInt("bestScore", 0));
+        int bestScore = prefs.getInt("bestScore", 0);
+        view.updateBestScore(bestScore);
+
         loadSounds();
         canvas.setFocusTraversable(true);
         canvas.setOnKeyPressed(this::handleKeyPress);
     }
 
-    /**
-     * Loads audio resources for the game.
-     */
     private void loadSounds() {
         try {
             URL eatUrl = getClass().getResource("/audio/eat.mp3");
@@ -75,27 +65,13 @@ public class GameController implements Initializable {
                 gameOverSound = new AudioClip(dieUrl.toExternalForm());
                 gameOverSound.setVolume(1.0);
             }
-
-//            URL bgUrl = getClass().getResource("/audio/background.mp3");
-//            if (bgUrl != null) {
-//                Media media = new Media(bgUrl.toExternalForm());
-//                backgroundMusic = new MediaPlayer(media);
-//                backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
-//                backgroundMusic.setVolume(0.2);
-//            }
         } catch (Exception e) {
             System.err.println("Audio files missing or unsupported.");
         }
     }
 
-    /**
-     * Handles game over logic and plays the death sound for the player.
-     */
     private void handleGameOver() {
         timer.stop();
-//        if (backgroundMusic != null) {
-//            backgroundMusic.stop();
-//        }
 
         if (model.getState() == GameState.LOST && gameOverSound != null) {
             gameOverSound.play();
@@ -105,35 +81,24 @@ public class GameController implements Initializable {
         int best = prefs.getInt("bestScore", 0);
         if (current > best) {
             prefs.putInt("bestScore", current);
-            bestScoreLabel.setText("Best: " + current);
+            view.updateBestScore(current);
         }
-        lastScoreLabel.setText("Last Score: " + current);
-        menuPane.setVisible(true);
+
+        view.showGameOverMenu(current);
     }
 
-    /**
-     * Starts the game session, spawns bots, and begins the music.
-     */
     @FXML
     public void startGame() {
-        menuPane.setVisible(false);
+        view.hideMenu(); // Делегируем во View
         model = new GameModel(WIDTH, HEIGHT, WIN_LENGTH, 3);
 
-        // Adding 3 bots at the start
         model.getSnakes().add(new Snake(new Point(2, 2), true));
         model.getSnakes().add(new Snake(new Point(25, 15), true));
         model.getSnakes().add(new Snake(new Point(5, 15), true));
 
-//        if (backgroundMusic != null) {
-//            backgroundMusic.play();
-//        }
-
         startTimer();
     }
 
-    /**
-     * Main animation loop.
-     */
     private void startTimer() {
         if (timer != null) {
             timer.stop();
@@ -150,9 +115,6 @@ public class GameController implements Initializable {
         timer.start();
     }
 
-    /**
-     * Processes one game tick: logic update and rendering.
-     */
     private void processTick() {
         int oldLength = model.getPlayerSnake().getBody().size();
         model.update();
@@ -161,26 +123,16 @@ public class GameController implements Initializable {
             eatSound.play();
         }
 
-        updateScoreUI();
-        draw();
+        int currentScore = model.getPlayerSnake().getBody().size() - 1;
+        view.updateScore(currentScore);
+
+        view.draw(model);
 
         if (model.getState() != GameState.PLAYING) {
             handleGameOver();
         }
     }
 
-    /**
-     * Updates the score on the UI labels.
-     */
-    private void updateScoreUI() {
-        int current = model.getPlayerSnake().getBody().size() - 1;
-        scoreLabel.setText("Score: " + current);
-    }
-
-    /**
-     * Handles keyboard input for snake direction.
-     * * @param event the key event
-     */
     private void handleKeyPress(KeyEvent event) {
         if (model == null) {
             return;
@@ -198,45 +150,5 @@ public class GameController implements Initializable {
         } else if (code == KeyCode.RIGHT && current != Direction.LEFT) {
             player.setDirection(Direction.RIGHT);
         }
-    }
-
-    /**
-     * Draws the game state on the canvas.
-     */
-    private void draw() {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, WIDTH * CELL_SIZE, HEIGHT * CELL_SIZE);
-
-        // Draw Food (Neon Red)
-        gc.setFill(Color.web("#FF003C"));
-        for (Point f : model.getFoods()) {
-            gc.fillOval(f.getX() * CELL_SIZE, f.getY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-        }
-
-        // Draw Snakes
-        for (Snake s : model.getSnakes()) {
-            if (s.isAlive()) {
-                gc.setFill(s.isRobot() ? Color.web("#00F3FF") : Color.web("#00FF41"));
-                for (Point p : s.getBody()) {
-                    gc.fillRect(p.getX() * CELL_SIZE + 1, p.getY() * CELL_SIZE + 1,
-                            CELL_SIZE - 2, CELL_SIZE - 2);
-                }
-            } else if (s.isRobot()) {
-                drawDeathEffect(gc, s.getHead());
-                }
-        }
-    }
-
-    /**
-     * Draws a simple flash effect when a snake dies.
-     * * @param gc the graphics context
-     * @param p the death location
-     */
-    private void drawDeathEffect(GraphicsContext gc, Point p) {
-        gc.setStroke(Color.ORANGE);
-        gc.setLineWidth(3);
-        gc.strokeOval(p.getX() * CELL_SIZE - 5, p.getY() * CELL_SIZE - 5,
-                CELL_SIZE + 10, CELL_SIZE + 10);
     }
 }
