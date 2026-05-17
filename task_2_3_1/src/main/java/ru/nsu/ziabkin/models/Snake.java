@@ -96,8 +96,8 @@ public class Snake {
      */
     public Point calculateNextHead() {
         Point head = getHead();
-        int nextX = head.getX();
-        int nextY = head.getY();
+        int nextX = head.getPosX();
+        int nextY = head.getPosY();
         if (direction == Direction.UP) {
             nextY--;
         }

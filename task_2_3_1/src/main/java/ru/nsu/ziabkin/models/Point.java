@@ -6,18 +6,12 @@ import java.util.Objects;
  * Class representing a point on a two-dimensional grid.
  */
 public class Point {
-    private final int x;
-    private final int y;
+    private final int posX;
+    private final int posY;
 
-    /**
-     * Creates a new point with specified coordinates.
-     *
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     */
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Point(int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
     }
 
     /**
@@ -25,8 +19,8 @@ public class Point {
      *
      * @return the X coordinate
      */
-    public int getX() {
-        return x;
+    public int getPosX() {
+        return posX;
     }
 
     /**
@@ -34,8 +28,8 @@ public class Point {
      *
      * @return the Y coordinate
      */
-    public int getY() {
-        return y;
+    public int getPosY() {
+        return posY;
     }
 
     @Override
@@ -47,11 +41,11 @@ public class Point {
             return false;
         }
         Point point = (Point) o;
-        return x == point.x && y == point.y;
+        return posX == point.posX && posY == point.posY;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(posX, posY);
     }
 }

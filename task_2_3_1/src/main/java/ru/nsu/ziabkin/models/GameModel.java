@@ -18,6 +18,11 @@ public class GameModel {
     private final List<Point> foods;
     private final Random random;
     private GameState state;
+    private Runnable onStateChanged;
+
+    public void setOnStateChanged(Runnable callback) {
+        this.onStateChanged = callback;
+    }
 
     // To track which milestones have already triggered a spawn
     private final Set<Integer> reachedMilestones = new HashSet<>();
@@ -34,6 +39,9 @@ public class GameModel {
         initGame();
     }
 
+    /**
+     * Initializes the game state, clears snakes and spawns food.
+     */
     private void initGame() {
         snakes.clear();
         foods.clear();
@@ -46,13 +54,19 @@ public class GameModel {
     }
 
     public void update() {
-        if (state != GameState.PLAYING) return;
+        if (state != GameState.PLAYING) {
+            return;
+        }
 
         updateRobots();
         moveSnakes();
         checkCollisions();
-        handleProgressiveSpawning(); // New milestone-based logic
+        handleProgressiveSpawning();
         checkWinCondition();
+
+        if (onStateChanged != null) {
+            onStateChanged.run();
+        }
     }
 
     /**
@@ -75,7 +89,6 @@ public class GameModel {
         int milestoneScore = (int) (winLength * percentage);
         int playerLength = getPlayerSnake().getBody().size();
 
-        // If player reaches the milestone and we haven't spawned for it yet
         if (playerLength >= milestoneScore && !reachedMilestones.contains(milestoneScore)) {
             for (int i = 0; i < count; i++) {
                 spawnNewBot();
@@ -101,25 +114,41 @@ public class GameModel {
 
     private Direction findSmartDirection(Snake snake) {
         Direction bestDir = findDirectionToClosestFood(snake);
-        if (isSafe(snake, bestDir)) return bestDir;
+        if (isSafe(snake, bestDir)) {
+            return bestDir;
+        }
         for (Direction d : Direction.values()) {
-            if (isSafe(snake, d)) return d;
+            if (isSafe(snake, d)) {
+                return d;
+            }
         }
         return bestDir;
     }
 
     private boolean isSafe(Snake snake, Direction dir) {
         Point head = snake.getHead();
-        int nx = head.getX(), ny = head.getY();
-        if (dir == Direction.UP) ny--;
-        else if (dir == Direction.DOWN) ny++;
-        else if (dir == Direction.LEFT) nx--;
-        else if (dir == Direction.RIGHT) nx++;
+        int nx = head.getPosX(), ny = head.getPosY();
+        if (dir == Direction.UP) {
+            ny--;
+        }
+        else if (dir == Direction.DOWN) {
+            ny++;
+        }
+        else if (dir == Direction.LEFT) {
+            nx--;
+        }
+        else if (dir == Direction.RIGHT) {
+            nx++;
+        }
 
-        if (nx < 0 || nx >= width || ny < 0 || ny >= height) return false;
+        if (nx < 0 || nx >= width || ny < 0 || ny >= height) {
+            return false;
+        }
         Point np = new Point(nx, ny);
         for (Snake s : snakes) {
-            if (s.isAlive() && s.getBody().contains(np)) return false;
+            if (s.isAlive() && s.getBody().contains(np)) {
+                return false;
+            }
         }
         Direction cur = snake.getDirection();
         return !((dir == Direction.UP && cur == Direction.DOWN) ||
@@ -133,14 +162,25 @@ public class GameModel {
         Point closest = null;
         int minD = Integer.MAX_VALUE;
         for (Point f : foods) {
-            int d = Math.abs(head.getX() - f.getX()) + Math.abs(head.getY() - f.getY());
-            if (d < minD) { minD = d; closest = f; }
+            int d = Math.abs(head.getPosX() - f.getPosX()) + Math.abs(head.getPosY() - f.getPosY());
+            if (d < minD) {
+                minD = d;
+                closest = f;
+            }
         }
         if (closest != null) {
-            if (closest.getX() > head.getX()) return Direction.RIGHT;
-            if (closest.getX() < head.getX()) return Direction.LEFT;
-            if (closest.getY() > head.getY()) return Direction.DOWN;
-            if (closest.getY() < head.getY()) return Direction.UP;
+            if (closest.getPosX() > head.getPosX()) {
+                return Direction.RIGHT;
+            }
+            if (closest.getPosX() < head.getPosX()) {
+                return Direction.LEFT;
+            }
+            if (closest.getPosY() > head.getPosY()){
+                return Direction.DOWN;
+            }
+            if (closest.getPosY() < head.getPosY()) {
+                return Direction.UP;
+            }
         }
         return snake.getDirection();
     }
@@ -151,26 +191,41 @@ public class GameModel {
                 Point next = s.calculateNextHead();
                 boolean ate = foods.contains(next);
                 s.move(next, ate);
-                if (ate) { foods.remove(next); spawnFood(); }
+                if (ate) {
+                    foods.remove(next);
+                    spawnFood();
+                }
             }
         }
     }
 
     private void checkCollisions() {
         for (Snake s : snakes) {
-            if (!s.isAlive()) continue;
+            if (!s.isAlive()) {
+                continue;
+            }
             Point h = s.getHead();
-            if (h.getX() < 0 || h.getX() >= width || h.getY() < 0 || h.getY() >= height) s.setAlive(false);
+            if (h.getPosX() < 0 || h.getPosX() >= width || h.getPosY() < 0 || h.getPosY() >= height) {
+                s.setAlive(false);
+            }
             for (Snake other : snakes) {
-                if (!other.isAlive()) continue;
+                if (!other.isAlive()) {
+                    continue;
+                }
                 List<Point> body = other.getBody();
                 for (int i = 0; i < body.size(); i++) {
-                    if (s == other && i == 0) continue;
-                    if (h.equals(body.get(i))) s.setAlive(false);
+                    if (s == other && i == 0) {
+                        continue;
+                    }
+                    if (h.equals(body.get(i))) {
+                        s.setAlive(false);
+                    }
                 }
             }
         }
-        if (!getPlayerSnake().isAlive()) state = GameState.LOST;
+        if (!getPlayerSnake().isAlive()) {
+            state = GameState.LOST;
+        }
     }
 
     private void checkWinCondition() {
@@ -180,23 +235,35 @@ public class GameModel {
         }
         boolean botsAlive = false;
         for (int i = 1; i < snakes.size(); i++) {
-            if (snakes.get(i).isAlive()) { botsAlive = true; break; }
+            if (snakes.get(i).isAlive()) {
+                botsAlive = true;
+                break;
+            }
         }
-        if (!botsAlive && snakes.size() > 1) state = GameState.WON;
+        if (!botsAlive && snakes.size() > 1) {
+            state = GameState.WON;
+        }
     }
 
     private void spawnFood() {
         Point p = findAnyFreePoint();
-        if (p != null) foods.add(p);
+        if (p != null) {
+            foods.add(p);
+        }
     }
 
     public Point findFreePoint() {
         Point playerHead = getPlayerSnake().getHead();
         for (int i = 0; i < 150; i++) {
-            int x = random.nextInt(width), y = random.nextInt(height);
+            int x = random.nextInt(width);
+            int y = random.nextInt(height);
             Point p = new Point(x, y);
-            if (Math.abs(p.getX() - playerHead.getX()) + Math.abs(p.getY() - playerHead.getY()) < 5) continue;
-            if (isPointActuallyFree(p)) return p;
+            if (Math.abs(p.getPosX() - playerHead.getPosX()) + Math.abs(p.getPosY() - playerHead.getPosY()) < 5) {
+                continue;
+            }
+            if (isPointActuallyFree(p)) {
+                return p;
+            }
         }
         return findAnyFreePoint();
     }
@@ -205,20 +272,61 @@ public class GameModel {
         for (int i = 0; i < 100; i++) {
             int x = random.nextInt(width), y = random.nextInt(height);
             Point p = new Point(x, y);
-            if (isPointActuallyFree(p)) return p;
+            if (isPointActuallyFree(p)) {
+                return p;
+            }
         }
         return null;
     }
 
     private boolean isPointActuallyFree(Point p) {
-        for (Snake s : snakes) if (s.getBody().contains(p)) return false;
+        for (Snake s : snakes) {
+            if (s.getBody().contains(p)) {
+                return false;
+            }
+        }
         return !foods.contains(p);
     }
 
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
-    public GameState getState() { return state; }
-    public List<Snake> getSnakes() { return snakes; }
-    public List<Point> getFoods() { return foods; }
-    public Snake getPlayerSnake() { return snakes.get(0); }
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
+    }
+    public GameState getState() {
+        return state;
+    }
+    public List<Snake> getSnakes() {
+        return snakes;
+    }
+    public List<Point> getFoods() {
+        return foods;
+    }
+    public Snake getPlayerSnake() {
+        return snakes.get(0);
+    }
+
+    /**
+     * Returns current player score (length minus head).
+     */
+    public int getScore() {
+        return getPlayerSnake().getBody().size() - 1;
+    }
+
+    /**
+     * Sets player's desired direction (controller should call this instead of
+     * manipulating snake internals directly).
+     */
+    public void setPlayerDirection(Direction d) {
+        getPlayerSnake().setDirection(d);
+    }
+
+    /**
+     * Adds a robot snake at given point. Controller should use this instead of
+     * modifying the internal snake list directly.
+     */
+    public void addRobotAt(Point p) {
+        snakes.add(new Snake(p, true));
+    }
 }

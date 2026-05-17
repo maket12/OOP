@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import ru.nsu.ziabkin.models.Direction;
@@ -23,13 +24,14 @@ import ru.nsu.ziabkin.views.GameView;
 public class GameController {
     private static final int WIDTH = 30;
     private static final int HEIGHT = 20;
-    private static final int WIN_LENGTH = 25;
+    private static final int WIN_LENGTH = 21;
 
     @FXML private Canvas canvas;
     @FXML private VBox menuPane;
     @FXML private Label scoreLabel;
     @FXML private Label bestScoreLabel;
     @FXML private Label lastScoreLabel;
+    @FXML private Text titleText;
 
     private GameModel model;
     private GameView view; // Добавляем ссылку на View
@@ -42,7 +44,7 @@ public class GameController {
 
     @FXML
     public void initialize() {
-        view = new GameView(canvas, scoreLabel, bestScoreLabel, lastScoreLabel, menuPane);
+        view = new GameView(canvas, scoreLabel, bestScoreLabel, lastScoreLabel, menuPane, titleText);
 
         int bestScore = prefs.getInt("bestScore", 0);
         view.updateBestScore(bestScore);
@@ -84,17 +86,30 @@ public class GameController {
             view.updateBestScore(current);
         }
 
-        view.showGameOverMenu(current);
+        if (model.getState() == GameState.WON) {
+            view.showVictoryMenu(current);
+        } else {
+            view.showGameOverMenu(current);
+        }
     }
 
     @FXML
     public void startGame() {
-        view.hideMenu(); // Делегируем во View
+        view.hideMenu();
         model = new GameModel(WIDTH, HEIGHT, WIN_LENGTH, 3);
 
         model.getSnakes().add(new Snake(new Point(2, 2), true));
         model.getSnakes().add(new Snake(new Point(25, 15), true));
         model.getSnakes().add(new Snake(new Point(5, 15), true));
+
+        model.setOnStateChanged(() -> {
+            view.draw(model);
+            view.updateScore(model.getScore());
+
+            if (model.getState() != GameState.PLAYING) {
+                handleGameOver();
+            }
+        });
 
         startTimer();
     }
@@ -117,19 +132,11 @@ public class GameController {
 
     private void processTick() {
         int oldLength = model.getPlayerSnake().getBody().size();
+
         model.update();
 
         if (model.getPlayerSnake().getBody().size() > oldLength && eatSound != null) {
             eatSound.play();
-        }
-
-        int currentScore = model.getPlayerSnake().getBody().size() - 1;
-        view.updateScore(currentScore);
-
-        view.draw(model);
-
-        if (model.getState() != GameState.PLAYING) {
-            handleGameOver();
         }
     }
 
