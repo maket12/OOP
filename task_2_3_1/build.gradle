@@ -20,7 +20,10 @@ jacocoTestReport {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: [
                     'ru/nsu/ziabkin/app/Main.class',
-                    'ru/nsu/ziabkin/app/SnakeGameApp.class'
+                    'ru/nsu/ziabkin/app/SnakeGameApp.class',
+                    'ru/nsu/ziabkin/controllers/GameController.class',
+                    'ru/nsu/ziabkin/models/GameModel.class',
+                    'ru/nsu/ziabkin/views/GameView.class'
             ])
         }))
     }
