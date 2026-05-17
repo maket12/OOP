@@ -16,6 +16,14 @@ jacocoTestReport {
     reports {
         xml.required = true
     }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    'ru/nsu/ziabkin/app/Main.class',
+                    'ru/nsu/ziabkin/app/SnakeGameApp.class'
+            ])
+        }))
+    }
 }
 
 javafx {
