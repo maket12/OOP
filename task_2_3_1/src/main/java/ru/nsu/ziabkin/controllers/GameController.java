@@ -8,9 +8,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import ru.nsu.ziabkin.models.Direction;
 import ru.nsu.ziabkin.models.GameModel;
 import ru.nsu.ziabkin.models.GameState;
@@ -44,7 +44,11 @@ public class GameController {
 
     @FXML
     public void initialize() {
-        view = new GameView(canvas, scoreLabel, bestScoreLabel, lastScoreLabel, menuPane, titleText);
+        view = new GameView(
+                canvas, scoreLabel,
+                bestScoreLabel, lastScoreLabel,
+                menuPane, titleText
+        );
 
         int bestScore = prefs.getInt("bestScore", 0);
         view.updateBestScore(bestScore);

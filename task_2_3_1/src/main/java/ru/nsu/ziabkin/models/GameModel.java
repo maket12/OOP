@@ -53,6 +53,9 @@ public class GameModel {
         }
     }
 
+    /**
+     * Update the same state and the field.
+     */
     public void update() {
         if (state != GameState.PLAYING) {
             return;
@@ -127,7 +130,8 @@ public class GameModel {
 
     private boolean isSafe(Snake snake, Direction dir) {
         Point head = snake.getHead();
-        int nx = head.getPosX(), ny = head.getPosY();
+        int nx = head.getPosX();
+        int ny = head.getPosY();
         if (dir == Direction.UP) {
             ny--;
         } else if (dir == Direction.DOWN) {
@@ -255,7 +259,11 @@ public class GameModel {
             int x = random.nextInt(width);
             int y = random.nextInt(height);
             Point p = new Point(x, y);
-            if (Math.abs(p.getPosX() - playerHead.getPosX()) + Math.abs(p.getPosY() - playerHead.getPosY()) < 5) {
+            if (Math.abs(
+                    p.getPosX() - playerHead.getPosX()
+            ) + Math.abs(
+                    p.getPosY() - playerHead.getPosY()
+            ) < 5) {
                 continue;
             }
             if (isPointActuallyFree(p)) {
