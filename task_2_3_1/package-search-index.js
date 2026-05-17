@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.ziabkin.app"},{"l":"ru.nsu.ziabkin.controllers"},{"l":"ru.nsu.ziabkin.models"},{"l":"ru.nsu.ziabkin.views"}];updateSearchResults();
