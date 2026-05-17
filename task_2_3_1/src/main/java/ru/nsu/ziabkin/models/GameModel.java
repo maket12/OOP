@@ -130,14 +130,11 @@ public class GameModel {
         int nx = head.getPosX(), ny = head.getPosY();
         if (dir == Direction.UP) {
             ny--;
-        }
-        else if (dir == Direction.DOWN) {
+        } else if (dir == Direction.DOWN) {
             ny++;
-        }
-        else if (dir == Direction.LEFT) {
+        } else if (dir == Direction.LEFT) {
             nx--;
-        }
-        else if (dir == Direction.RIGHT) {
+        } else if (dir == Direction.RIGHT) {
             nx++;
         }
 
@@ -151,10 +148,10 @@ public class GameModel {
             }
         }
         Direction cur = snake.getDirection();
-        return !((dir == Direction.UP && cur == Direction.DOWN) ||
-                (dir == Direction.DOWN && cur == Direction.UP) ||
-                (dir == Direction.LEFT && cur == Direction.RIGHT) ||
-                (dir == Direction.RIGHT && cur == Direction.LEFT));
+        return !((dir == Direction.UP && cur == Direction.DOWN)
+                || (dir == Direction.DOWN && cur == Direction.UP)
+                || (dir == Direction.LEFT && cur == Direction.RIGHT)
+                || (dir == Direction.RIGHT && cur == Direction.LEFT));
     }
 
     private Direction findDirectionToClosestFood(Snake snake) {
@@ -175,7 +172,7 @@ public class GameModel {
             if (closest.getPosX() < head.getPosX()) {
                 return Direction.LEFT;
             }
-            if (closest.getPosY() > head.getPosY()){
+            if (closest.getPosY() > head.getPosY()) {
                 return Direction.DOWN;
             }
             if (closest.getPosY() < head.getPosY()) {
@@ -270,7 +267,8 @@ public class GameModel {
 
     private Point findAnyFreePoint() {
         for (int i = 0; i < 100; i++) {
-            int x = random.nextInt(width), y = random.nextInt(height);
+            int x = random.nextInt(width);
+            int y = random.nextInt(height);
             Point p = new Point(x, y);
             if (isPointActuallyFree(p)) {
                 return p;
@@ -288,23 +286,43 @@ public class GameModel {
         return !foods.contains(p);
     }
 
+    /**
+     * Gets the grid width.
+     *
+     * @return grid width
+     */
     public int getWidth() {
         return width;
     }
+
+    /**
+     * Gets the grid height.
+     *
+     * @return grid height
+     */
     public int getHeight() {
         return height;
     }
+
+    /**
+     * Gets the current game state.
+     *
+     * @return game state
+     */
     public GameState getState() {
         return state;
     }
+
     public List<Snake> getSnakes() {
         return snakes;
     }
+
     public List<Point> getFoods() {
         return foods;
     }
+
     public Snake getPlayerSnake() {
-        return snakes.get(0);
+        return snakes.getFirst();
     }
 
     /**

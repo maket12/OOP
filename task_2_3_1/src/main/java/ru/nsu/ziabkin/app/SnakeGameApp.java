@@ -18,7 +18,9 @@ public class SnakeGameApp extends Application {
         try {
             URL resource = getClass().getResource("/views/game_view.fxml");
             if (resource == null) {
-                throw new IllegalStateException("Не удалось найти файл разметки: /views/game_view.fxml");
+                throw new IllegalStateException(
+                    "Не удалось найти файл разметки: /views/game_view.fxml"
+                );
             }
             FXMLLoader loader = new FXMLLoader(resource);
             Parent root = loader.load();
@@ -31,7 +33,9 @@ public class SnakeGameApp extends Application {
 
         } catch (Exception e) {
             e.printStackTrace();
-            showErrorDialog("Критическая ошибка", "Не удалось запустить игру.\nПричина: " + e.getMessage());
+            showErrorDialog("Критическая ошибка",
+                    "Не удалось запустить игру.\nПричина: " + e.getMessage()
+            );
         }
     }
 

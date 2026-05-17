@@ -23,7 +23,21 @@ public class GameView {
     private final VBox menuPane;
     private final Text titleText;
 
-    public GameView(Canvas canvas, Label scoreLabel, Label bestScoreLabel, Label lastScoreLabel, VBox menuPane, Text titleText) {
+    /**
+     * Constructs a new GameView with UI components.
+     *
+     * @param canvas the drawing canvas
+     * @param scoreLabel the current score label
+     * @param bestScoreLabel the best score label
+     * @param lastScoreLabel the last score label
+     * @param menuPane the menu container
+     * @param titleText the title text node
+     */
+    public GameView(
+        Canvas canvas, Label scoreLabel,
+        Label bestScoreLabel, Label lastScoreLabel,
+        VBox menuPane, Text titleText
+    ) {
         this.canvas = canvas;
         this.scoreLabel = scoreLabel;
         this.bestScoreLabel = bestScoreLabel;
@@ -59,6 +73,12 @@ public class GameView {
         }
     }
 
+    /**
+     * Draws the death effect.
+     *
+     * @param gc graphics context
+     * @param p center point
+     */
     private void drawDeathEffect(GraphicsContext gc, Point p) {
         gc.setStroke(Color.ORANGE);
         gc.setLineWidth(3);
@@ -66,26 +86,49 @@ public class GameView {
                 CELL_SIZE + 10, CELL_SIZE + 10);
     }
 
+    /**
+     * Updates the score label text.
+     *
+     * @param currentScore new score value
+     */
     public void updateScore(int currentScore) {
         scoreLabel.setText("Score: " + currentScore);
     }
 
+    /**
+     * Updates the best score label text.
+     *
+     * @param bestScore new best score value
+     */
     public void updateBestScore(int bestScore) {
         bestScoreLabel.setText("Best: " + bestScore);
     }
 
+    /**
+     * Shows the game over overlay layout menu.
+     *
+     * @param currentScore final score value
+     */
     public void showGameOverMenu(int currentScore) {
         titleText.setText("GAME OVER");
         lastScoreLabel.setText("Last Score: " + currentScore);
         menuPane.setVisible(true);
     }
 
+    /**
+     * Shows the game victory overlay layout menu.
+     *
+     * @param currentScore final score value
+     */
     public void showVictoryMenu(int currentScore) {
         titleText.setText("VICTORY");
         lastScoreLabel.setText("Score: " + currentScore);
         menuPane.setVisible(true);
     }
 
+    /**
+     * Hides menu.
+     */
     public void hideMenu() {
         menuPane.setVisible(false);
         titleText.setText("SNAKE CYBERPUNK");
