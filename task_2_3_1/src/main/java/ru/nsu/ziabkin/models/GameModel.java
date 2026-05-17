@@ -330,7 +330,7 @@ public class GameModel {
     }
 
     public Snake getPlayerSnake() {
-        return snakes.getFirst();
+        return snakes.get(0);
     }
 
     /**
