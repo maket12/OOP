@@ -334,7 +334,7 @@ public class GameModel {
     }
 
     /**
-     * Returns current player score (length minus head).
+     * Returns current player's score (length minus head).
      */
     public int getScore() {
         return getPlayerSnake().getBody().size() - 1;
