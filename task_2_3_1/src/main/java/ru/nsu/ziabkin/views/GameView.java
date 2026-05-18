@@ -52,23 +52,31 @@ public class GameView {
     public void draw(GameModel model) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
+        double cellWidth = canvas.getWidth() / model.getWidth();
+        double cellHeight = canvas.getHeight() / model.getHeight();
+        double cellSize = Math.min(cellWidth, cellHeight);
+
+        if (cellSize <= 0) {
+            cellSize = 20;
+        }
+
         gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, model.getWidth() * CELL_SIZE, model.getHeight() * CELL_SIZE);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         gc.setFill(Color.web("#FF003C"));
         for (Point f : model.getFoods()) {
-            gc.fillOval(f.getPosX() * CELL_SIZE, f.getPosY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            gc.fillOval(f.getPosX() * cellSize, f.getPosY() * cellSize, cellSize, cellSize);
         }
 
         for (Snake s : model.getSnakes()) {
             if (s.isAlive()) {
                 gc.setFill(s.isRobot() ? Color.web("#00F3FF") : Color.web("#00FF41"));
                 for (Point p : s.getBody()) {
-                    gc.fillRect(p.getPosX() * CELL_SIZE + 1, p.getPosY() * CELL_SIZE + 1,
-                            CELL_SIZE - 2, CELL_SIZE - 2);
+                    gc.fillRect(p.getPosX() * cellSize + 1, p.getPosY() * cellSize + 1,
+                            cellSize - 2, cellSize - 2);
                 }
             } else if (s.isRobot()) {
-                drawDeathEffect(gc, s.getHead());
+                drawDeathEffect(gc, s.getHead(), cellSize);
             }
         }
     }
@@ -79,11 +87,12 @@ public class GameView {
      * @param gc graphics context
      * @param p center point
      */
-    private void drawDeathEffect(GraphicsContext gc, Point p) {
+    private void drawDeathEffect(GraphicsContext gc, Point p, double cellSize) {
         gc.setStroke(Color.ORANGE);
-        gc.setLineWidth(3);
-        gc.strokeOval(p.getPosX() * CELL_SIZE - 5, p.getPosY() * CELL_SIZE - 5,
-                CELL_SIZE + 10, CELL_SIZE + 10);
+        gc.setLineWidth(cellSize * 0.15);
+        gc.strokeOval(p.getPosX() * cellSize - (cellSize * 0.25),
+                p.getPosY() * cellSize - (cellSize * 0.25),
+                cellSize * 1.5, cellSize * 1.5);
     }
 
     /**

@@ -28,7 +28,7 @@ public class SnakeGameApp extends Application {
 
             primaryStage.setTitle("Snake Game MVC");
             primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
+            primaryStage.setResizable(true);
             primaryStage.show();
 
         } catch (Exception e) {

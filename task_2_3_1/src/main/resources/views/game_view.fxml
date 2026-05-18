@@ -19,7 +19,9 @@
                    style="-fx-text-fill: gold; -fx-font-size: 20; -fx-font-family: 'Courier New';"/>
         </HBox>
 
-        <Canvas fx:id="canvas" width="600" height="400"/>
+        <StackPane fx:id="canvasContainer" VBox.vgrow="ALWAYS">
+            <Canvas fx:id="canvas" width="600" height="400"/>
+        </StackPane>
     </VBox>
 
     <VBox fx:id="menuPane" alignment="CENTER" spacing="25"

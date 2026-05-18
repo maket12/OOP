@@ -27,6 +27,7 @@ public class GameController {
     private static final int WIN_LENGTH = 21;
 
     @FXML private Canvas canvas;
+    @FXML private javafx.scene.layout.StackPane canvasContainer;
     @FXML private VBox menuPane;
     @FXML private Label scoreLabel;
     @FXML private Label bestScoreLabel;
@@ -56,6 +57,18 @@ public class GameController {
         loadSounds();
         canvas.setFocusTraversable(true);
         canvas.setOnKeyPressed(this::handleKeyPress);
+
+        canvas.widthProperty().bind(canvasContainer.widthProperty());
+        canvas.heightProperty().bind(canvasContainer.heightProperty());
+
+        canvas.widthProperty().addListener(observable -> redrawOnResize());
+        canvas.heightProperty().addListener(observable -> redrawOnResize());
+    }
+
+    private void redrawOnResize() {
+        if (model != null && view != null) {
+            view.draw(model);
+        }
     }
 
     private void loadSounds() {
