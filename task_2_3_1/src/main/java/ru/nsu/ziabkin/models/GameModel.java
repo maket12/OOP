@@ -48,6 +48,11 @@ public class GameModel {
         reachedMilestones.clear();
         // Index 0 is player
         snakes.add(new Snake(new Point(width / 2, height / 2), false));
+
+        snakes.add(new Snake(new Point(2, 2), true));
+        snakes.add(new Snake(new Point(25, 15), true));
+        snakes.add(new Snake(new Point(5, 15), true));
+
         for (int i = 0; i < foodCount; i++) {
             spawnFood();
         }

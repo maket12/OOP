@@ -102,10 +102,6 @@ public class GameController {
         view.hideMenu();
         model = new GameModel(WIDTH, HEIGHT, WIN_LENGTH, 3);
 
-        model.getSnakes().add(new Snake(new Point(2, 2), true));
-        model.getSnakes().add(new Snake(new Point(25, 15), true));
-        model.getSnakes().add(new Snake(new Point(5, 15), true));
-
         model.setOnStateChanged(() -> {
             view.draw(model);
             view.updateScore(model.getScore());
