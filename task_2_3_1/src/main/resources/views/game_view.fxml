@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ru.nsu.ziabkin.controllers.GameController">
+
+    <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #050505;">
+        <HBox alignment="CENTER" spacing="50" style="-fx-padding: 10;">
+            <Label fx:id="scoreLabel" text="Score: 0"
+                   style="-fx-text-fill: #00FF41; -fx-font-size: 20; -fx-font-family: 'Courier New';"/>
+            <Label fx:id="bestScoreLabel" text="Best: 0"
+                   style="-fx-text-fill: gold; -fx-font-size: 20; -fx-font-family: 'Courier New';"/>
+        </HBox>
+
+        <StackPane fx:id="canvasContainer" VBox.vgrow="ALWAYS">
+            <Canvas fx:id="canvas" width="600" height="400"/>
+        </StackPane>
+    </VBox>
+
+    <VBox fx:id="menuPane" alignment="CENTER" spacing="25"
+          style="-fx-background-color: rgba(0, 0, 0, 0.9);">
+
+         <Text fx:id="titleText" text="SNAKE CYBERPUNK"
+                style="-fx-fill: #00F3FF; -fx-font-size: 45; -fx-font-weight: bold;"/>
+
+        <VBox alignment="CENTER" spacing="10">
+            <Label fx:id="lastScoreLabel" text="Last Score: 0"
+                   style="-fx-text-fill: white; -fx-font-size: 18;"/>
+            <Label text="CONTROLS: ARROW KEYS"
+                   style="-fx-text-fill: #555555; -fx-font-size: 14;"/>
+        </VBox>
+
+       <Button text="Play" onAction="#startGame"
+              style="-fx-background-color: #00FF41; -fx-text-fill: black;
+                     -fx-font-size: 22; -fx-font-weight: bold; -fx-padding: 10 30;
+                     -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+        <Label text="3 HOSTILE BOTS DETECTED"
+               style="-fx-text-fill: #FF003C; -fx-font-style: italic;"/>
+    </VBox>
+
+</StackPane>
