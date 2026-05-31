@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f4ee37f0-c2f3-43b4-851a-a5c9aba8cb8c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/checksums/sha1-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../task_1_2_1/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/9.2.0/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/8.7/gc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/cli/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/cli/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/service/CheckerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/service/CheckerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/service/GradleTaskRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/service/GradleTaskRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/service/ProcessRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/classes/java/main/ru/nsu/checker/service/ProcessRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/resources/main/checker.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/resources/main/checker.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/resources/main/tasks.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/resources/main/tasks.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/cli/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/cli/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/service/CheckerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/service/CheckerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/service/GradleTaskRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/service/GradleTaskRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/service/ProcessRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/java/ru/nsu/checker/service/ProcessRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/resources/checker.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/resources/checker.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/resources/tasks.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/app/src/main/resources/tasks.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop-checker-src/oop-checker/config/checker.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-checker-src/oop-checker/config/checker.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shit/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shit/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shit/settings.gradle" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3EU2xJbKtr6Ab4SPc7KkP18Uj56" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build oop-checker-2.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;task__2__4__1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/All important/Java/OOP/oop-checker-2&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Lenovo/Desktop/All important/Java/OOP/oop-checker-2/src/main/java/org/example/Main.java&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\All important\Java\OOP\oop-checker-2" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\All important\Java\OOP\oop-checker-2" />
+      <recent name="C:\Users\Lenovo\Desktop\All important\Java\OOP\oop-checker-2\app" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ru.nsu.checker.cli.Main" />
+      <module name="oop-checker-2" />
+      <option name="PROGRAM_PARAMETERS" value="--dir &quot;C:\Users\Lenovo\Desktop\All important\Java\OOP\oop-checker-2\config&quot; run &gt; report.html" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4ee37f0-c2f3-43b4-851a-a5c9aba8cb8c" name="Changes" comment="" />
+      <created>1780219079892</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780219079892</updated>
+    </task>
+    <servers />
+  </component>
+</project>
