@@ -1,0 +1,8 @@
+plugins {
+    id 'groovy'
+}
+
+allprojects {
+    group = 'ru.nsu'
+    version = '1.0.0'
+}
